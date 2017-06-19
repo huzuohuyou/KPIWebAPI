@@ -1,0 +1,575 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="KPIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ED_KPI_INFO">
+          <Key>
+            <PropertyRef Name="KPI_ID" />
+          </Key>
+          <Property Name="KPI_ID" Type="int" Nullable="false" />
+          <Property Name="SD_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="KPI_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="KPI_NAME" Type="varchar" MaxLength="200" />
+          <Property Name="KPI_ALIAS" Type="varchar" MaxLength="200" />
+          <Property Name="KPI_TYPE_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="ORDER_NO" Type="int" />
+          <Property Name="UPD_USER_ID" Type="varchar" MaxLength="20" />
+          <Property Name="UPD_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ED_KPI_VALUE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SD_CPAT_NO" Type="varchar" MaxLength="60" />
+          <Property Name="KPI_ID" Type="int" />
+          <Property Name="INDEX_VALUE" Type="int" />
+          <Property Name="UPD_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EP_KPI_PARAM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SD_ITEM_ID" Type="int" Nullable="false" />
+          <Property Name="KPI_PARAM_NAME" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UPD_USER_ID" Type="varchar" MaxLength="20" />
+          <Property Name="UPD_DATE" Type="datetime" />
+          <Property Name="KPI_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="EP_KPI_SET">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KPI_ID" Type="int" />
+          <Property Name="KPI_DESC" Type="varchar" MaxLength="2000" />
+          <Property Name="NUM_FORMULA" Type="varchar" MaxLength="1000" />
+          <Property Name="FRA_FORMULA" Type="varchar" MaxLength="1000" />
+          <Property Name="INVALID_FLAG" Type="int" />
+          <Property Name="UPD_USER_ID" Type="varchar" MaxLength="20" />
+          <Property Name="UPD_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PAT_SD_ITEM_RESULT">
+          <Key>
+            <PropertyRef Name="SD_CODE" />
+            <PropertyRef Name="PATIENT_ID" />
+            <PropertyRef Name="SD_ITEM_CODE" />
+          </Key>
+          <Property Name="SD_CODE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PATIENT_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SD_ITEM_CODE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SD_ITEM_VALUE" Type="varchar" MaxLength="500" />
+          <Property Name="SD_ITEM_U_VALUE" Type="varchar" MaxLength="500" />
+          <Property Name="UPDATE_USER_ID" Type="varchar" MaxLength="20" />
+          <Property Name="UPDATE_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SD_CPATS">
+          <Key>
+            <PropertyRef Name="SD_CPAT_NO" />
+          </Key>
+          <Property Name="SD_CPAT_NO" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="SD_CODE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SD_CPAT_DATE" Type="datetime" Nullable="false" />
+          <Property Name="PATIENT_ID" Type="varchar" MaxLength="60" />
+          <Property Name="UPD_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SD_INFO">
+          <Key>
+            <PropertyRef Name="SD_CODE" />
+          </Key>
+          <Property Name="SD_CODE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SD_NAME" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="SD_ALIAS" Type="varchar" MaxLength="20" />
+          <Property Name="ORDER_NO" Type="int" />
+          <Property Name="SC_FLAG" Type="int" Nullable="false" />
+          <Property Name="EV_FLAG" Type="int" Nullable="false" />
+          <Property Name="UPD_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SD_ITEM_INFO">
+          <Key>
+            <PropertyRef Name="SD_ITEM_ID" />
+          </Key>
+          <Property Name="SD_ITEM_ID" Type="int" Nullable="false" />
+          <Property Name="SD_CODE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SD_ITEM_CODE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SD_ITEM_NAME" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="DATA_TYPE" Type="varchar" MaxLength="20" />
+          <Property Name="SD_ITEM_ALIAS" Type="varchar" MaxLength="60" />
+          <Property Name="ORDER_NO" Type="int" />
+          <Property Name="ITEM_TYPE_CODE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ITEM_DATA_TYPE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ITEM_UNIT" Type="varchar" MaxLength="20" />
+          <Property Name="UPD_USER_ID" Type="varchar" MaxLength="20" />
+          <Property Name="UPD_DATE" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_ED_KPI_V_REFERENCE_ED_KPI_I">
+          <End Role="ED_KPI_INFO" Type="Self.ED_KPI_INFO" Multiplicity="0..1" />
+          <End Role="ED_KPI_VALUE" Type="Self.ED_KPI_VALUE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ED_KPI_INFO">
+              <PropertyRef Name="KPI_ID" />
+            </Principal>
+            <Dependent Role="ED_KPI_VALUE">
+              <PropertyRef Name="KPI_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ED_KPI_V_REFERENCE_SD_CPATS">
+          <End Role="SD_CPATS" Type="Self.SD_CPATS" Multiplicity="0..1" />
+          <End Role="ED_KPI_VALUE" Type="Self.ED_KPI_VALUE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SD_CPATS">
+              <PropertyRef Name="SD_CPAT_NO" />
+            </Principal>
+            <Dependent Role="ED_KPI_VALUE">
+              <PropertyRef Name="SD_CPAT_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EP_KPI_P_REFERENCE_ED_KPI_I">
+          <End Role="ED_KPI_INFO" Type="Self.ED_KPI_INFO" Multiplicity="0..1" />
+          <End Role="EP_KPI_PARAM" Type="Self.EP_KPI_PARAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ED_KPI_INFO">
+              <PropertyRef Name="KPI_ID" />
+            </Principal>
+            <Dependent Role="EP_KPI_PARAM">
+              <PropertyRef Name="KPI_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EP_KPI_P_REFERENCE_SD_ITEM_">
+          <End Role="SD_ITEM_INFO" Type="Self.SD_ITEM_INFO" Multiplicity="1" />
+          <End Role="EP_KPI_PARAM" Type="Self.EP_KPI_PARAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SD_ITEM_INFO">
+              <PropertyRef Name="SD_ITEM_ID" />
+            </Principal>
+            <Dependent Role="EP_KPI_PARAM">
+              <PropertyRef Name="SD_ITEM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EP_KPI_S_REFERENCE_ED_KPI_I">
+          <End Role="ED_KPI_INFO" Type="Self.ED_KPI_INFO" Multiplicity="0..1" />
+          <End Role="EP_KPI_SET" Type="Self.EP_KPI_SET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ED_KPI_INFO">
+              <PropertyRef Name="KPI_ID" />
+            </Principal>
+            <Dependent Role="EP_KPI_SET">
+              <PropertyRef Name="KPI_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SD_ITEM__REFERENCE_SD_INFO">
+          <End Role="SD_INFO" Type="Self.SD_INFO" Multiplicity="1" />
+          <End Role="SD_ITEM_INFO" Type="Self.SD_ITEM_INFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SD_INFO">
+              <PropertyRef Name="SD_CODE" />
+            </Principal>
+            <Dependent Role="SD_ITEM_INFO">
+              <PropertyRef Name="SD_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KPIModelStoreContainer">
+          <EntitySet Name="ED_KPI_INFO" EntityType="Self.ED_KPI_INFO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ED_KPI_VALUE" EntityType="Self.ED_KPI_VALUE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EP_KPI_PARAM" EntityType="Self.EP_KPI_PARAM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EP_KPI_SET" EntityType="Self.EP_KPI_SET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PAT_SD_ITEM_RESULT" EntityType="Self.PAT_SD_ITEM_RESULT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SD_CPATS" EntityType="Self.SD_CPATS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SD_INFO" EntityType="Self.SD_INFO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SD_ITEM_INFO" EntityType="Self.SD_ITEM_INFO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ED_KPI_V_REFERENCE_ED_KPI_I" Association="Self.FK_ED_KPI_V_REFERENCE_ED_KPI_I">
+            <End Role="ED_KPI_INFO" EntitySet="ED_KPI_INFO" />
+            <End Role="ED_KPI_VALUE" EntitySet="ED_KPI_VALUE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ED_KPI_V_REFERENCE_SD_CPATS" Association="Self.FK_ED_KPI_V_REFERENCE_SD_CPATS">
+            <End Role="SD_CPATS" EntitySet="SD_CPATS" />
+            <End Role="ED_KPI_VALUE" EntitySet="ED_KPI_VALUE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EP_KPI_P_REFERENCE_ED_KPI_I" Association="Self.FK_EP_KPI_P_REFERENCE_ED_KPI_I">
+            <End Role="ED_KPI_INFO" EntitySet="ED_KPI_INFO" />
+            <End Role="EP_KPI_PARAM" EntitySet="EP_KPI_PARAM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EP_KPI_P_REFERENCE_SD_ITEM_" Association="Self.FK_EP_KPI_P_REFERENCE_SD_ITEM_">
+            <End Role="SD_ITEM_INFO" EntitySet="SD_ITEM_INFO" />
+            <End Role="EP_KPI_PARAM" EntitySet="EP_KPI_PARAM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EP_KPI_S_REFERENCE_ED_KPI_I" Association="Self.FK_EP_KPI_S_REFERENCE_ED_KPI_I">
+            <End Role="ED_KPI_INFO" EntitySet="ED_KPI_INFO" />
+            <End Role="EP_KPI_SET" EntitySet="EP_KPI_SET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SD_ITEM__REFERENCE_SD_INFO" Association="Self.FK_SD_ITEM__REFERENCE_SD_INFO">
+            <End Role="SD_INFO" EntitySet="SD_INFO" />
+            <End Role="SD_ITEM_INFO" EntitySet="SD_ITEM_INFO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KPIModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ED_KPI_INFO">
+          <Key>
+            <PropertyRef Name="KPI_ID" />
+          </Key>
+          <Property Name="KPI_ID" Type="Int32" Nullable="false" />
+          <Property Name="SD_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="KPI_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="KPI_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="KPI_ALIAS" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="KPI_TYPE_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ORDER_NO" Type="Int32" />
+          <Property Name="UPD_USER_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UPD_DATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ED_KPI_VALUE" Relationship="Self.FK_ED_KPI_V_REFERENCE_ED_KPI_I" FromRole="ED_KPI_INFO" ToRole="ED_KPI_VALUE" />
+          <NavigationProperty Name="EP_KPI_PARAM" Relationship="Self.FK_EP_KPI_P_REFERENCE_ED_KPI_I" FromRole="ED_KPI_INFO" ToRole="EP_KPI_PARAM" />
+          <NavigationProperty Name="EP_KPI_SET" Relationship="Self.FK_EP_KPI_S_REFERENCE_ED_KPI_I" FromRole="ED_KPI_INFO" ToRole="EP_KPI_SET" />
+        </EntityType>
+        <EntityType Name="ED_KPI_VALUE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SD_CPAT_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="KPI_ID" Type="Int32" />
+          <Property Name="INDEX_VALUE" Type="Int32" />
+          <Property Name="UPD_DATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ED_KPI_INFO" Relationship="Self.FK_ED_KPI_V_REFERENCE_ED_KPI_I" FromRole="ED_KPI_VALUE" ToRole="ED_KPI_INFO" />
+          <NavigationProperty Name="SD_CPATS" Relationship="Self.FK_ED_KPI_V_REFERENCE_SD_CPATS" FromRole="ED_KPI_VALUE" ToRole="SD_CPATS" />
+        </EntityType>
+        <EntityType Name="EP_KPI_PARAM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SD_ITEM_ID" Type="Int32" Nullable="false" />
+          <Property Name="KPI_PARAM_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UPD_USER_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UPD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="KPI_ID" Type="Int32" />
+          <NavigationProperty Name="ED_KPI_INFO" Relationship="Self.FK_EP_KPI_P_REFERENCE_ED_KPI_I" FromRole="EP_KPI_PARAM" ToRole="ED_KPI_INFO" />
+          <NavigationProperty Name="SD_ITEM_INFO" Relationship="Self.FK_EP_KPI_P_REFERENCE_SD_ITEM_" FromRole="EP_KPI_PARAM" ToRole="SD_ITEM_INFO" />
+        </EntityType>
+        <EntityType Name="EP_KPI_SET">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KPI_ID" Type="Int32" />
+          <Property Name="KPI_DESC" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="NUM_FORMULA" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="FRA_FORMULA" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="INVALID_FLAG" Type="Int32" />
+          <Property Name="UPD_USER_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UPD_DATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ED_KPI_INFO" Relationship="Self.FK_EP_KPI_S_REFERENCE_ED_KPI_I" FromRole="EP_KPI_SET" ToRole="ED_KPI_INFO" />
+        </EntityType>
+        <EntityType Name="PAT_SD_ITEM_RESULT">
+          <Key>
+            <PropertyRef Name="SD_CODE" />
+            <PropertyRef Name="PATIENT_ID" />
+            <PropertyRef Name="SD_ITEM_CODE" />
+          </Key>
+          <Property Name="SD_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PATIENT_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SD_ITEM_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SD_ITEM_VALUE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SD_ITEM_U_VALUE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="UPDATE_USER_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UPDATE_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="SD_CPATS">
+          <Key>
+            <PropertyRef Name="SD_CPAT_NO" />
+          </Key>
+          <Property Name="SD_CPAT_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SD_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SD_CPAT_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PATIENT_ID" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="UPD_DATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ED_KPI_VALUE" Relationship="Self.FK_ED_KPI_V_REFERENCE_SD_CPATS" FromRole="SD_CPATS" ToRole="ED_KPI_VALUE" />
+        </EntityType>
+        <EntityType Name="SD_INFO">
+          <Key>
+            <PropertyRef Name="SD_CODE" />
+          </Key>
+          <Property Name="SD_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SD_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SD_ALIAS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ORDER_NO" Type="Int32" />
+          <Property Name="SC_FLAG" Type="Int32" Nullable="false" />
+          <Property Name="EV_FLAG" Type="Int32" Nullable="false" />
+          <Property Name="UPD_DATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="SD_ITEM_INFO" Relationship="Self.FK_SD_ITEM__REFERENCE_SD_INFO" FromRole="SD_INFO" ToRole="SD_ITEM_INFO" />
+        </EntityType>
+        <EntityType Name="SD_ITEM_INFO">
+          <Key>
+            <PropertyRef Name="SD_ITEM_ID" />
+          </Key>
+          <Property Name="SD_ITEM_ID" Type="Int32" Nullable="false" />
+          <Property Name="SD_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SD_ITEM_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SD_ITEM_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DATA_TYPE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SD_ITEM_ALIAS" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ORDER_NO" Type="Int32" />
+          <Property Name="ITEM_TYPE_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ITEM_DATA_TYPE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ITEM_UNIT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UPD_USER_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UPD_DATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="EP_KPI_PARAM" Relationship="Self.FK_EP_KPI_P_REFERENCE_SD_ITEM_" FromRole="SD_ITEM_INFO" ToRole="EP_KPI_PARAM" />
+          <NavigationProperty Name="SD_INFO" Relationship="Self.FK_SD_ITEM__REFERENCE_SD_INFO" FromRole="SD_ITEM_INFO" ToRole="SD_INFO" />
+        </EntityType>
+        <Association Name="FK_ED_KPI_V_REFERENCE_ED_KPI_I">
+          <End Role="ED_KPI_INFO" Type="Self.ED_KPI_INFO" Multiplicity="0..1" />
+          <End Role="ED_KPI_VALUE" Type="Self.ED_KPI_VALUE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ED_KPI_INFO">
+              <PropertyRef Name="KPI_ID" />
+            </Principal>
+            <Dependent Role="ED_KPI_VALUE">
+              <PropertyRef Name="KPI_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EP_KPI_P_REFERENCE_ED_KPI_I">
+          <End Role="ED_KPI_INFO" Type="Self.ED_KPI_INFO" Multiplicity="0..1" />
+          <End Role="EP_KPI_PARAM" Type="Self.EP_KPI_PARAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ED_KPI_INFO">
+              <PropertyRef Name="KPI_ID" />
+            </Principal>
+            <Dependent Role="EP_KPI_PARAM">
+              <PropertyRef Name="KPI_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EP_KPI_S_REFERENCE_ED_KPI_I">
+          <End Role="ED_KPI_INFO" Type="Self.ED_KPI_INFO" Multiplicity="0..1" />
+          <End Role="EP_KPI_SET" Type="Self.EP_KPI_SET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ED_KPI_INFO">
+              <PropertyRef Name="KPI_ID" />
+            </Principal>
+            <Dependent Role="EP_KPI_SET">
+              <PropertyRef Name="KPI_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ED_KPI_V_REFERENCE_SD_CPATS">
+          <End Role="SD_CPATS" Type="Self.SD_CPATS" Multiplicity="0..1" />
+          <End Role="ED_KPI_VALUE" Type="Self.ED_KPI_VALUE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SD_CPATS">
+              <PropertyRef Name="SD_CPAT_NO" />
+            </Principal>
+            <Dependent Role="ED_KPI_VALUE">
+              <PropertyRef Name="SD_CPAT_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EP_KPI_P_REFERENCE_SD_ITEM_">
+          <End Role="SD_ITEM_INFO" Type="Self.SD_ITEM_INFO" Multiplicity="1" />
+          <End Role="EP_KPI_PARAM" Type="Self.EP_KPI_PARAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SD_ITEM_INFO">
+              <PropertyRef Name="SD_ITEM_ID" />
+            </Principal>
+            <Dependent Role="EP_KPI_PARAM">
+              <PropertyRef Name="SD_ITEM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SD_ITEM__REFERENCE_SD_INFO">
+          <End Role="SD_INFO" Type="Self.SD_INFO" Multiplicity="1" />
+          <End Role="SD_ITEM_INFO" Type="Self.SD_ITEM_INFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SD_INFO">
+              <PropertyRef Name="SD_CODE" />
+            </Principal>
+            <Dependent Role="SD_ITEM_INFO">
+              <PropertyRef Name="SD_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KPIEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ED_KPI_INFO" EntityType="Self.ED_KPI_INFO" />
+          <EntitySet Name="ED_KPI_VALUE" EntityType="Self.ED_KPI_VALUE" />
+          <EntitySet Name="EP_KPI_PARAM" EntityType="Self.EP_KPI_PARAM" />
+          <EntitySet Name="EP_KPI_SET" EntityType="Self.EP_KPI_SET" />
+          <EntitySet Name="PAT_SD_ITEM_RESULT" EntityType="Self.PAT_SD_ITEM_RESULT" />
+          <EntitySet Name="SD_CPATS" EntityType="Self.SD_CPATS" />
+          <EntitySet Name="SD_INFO" EntityType="Self.SD_INFO" />
+          <EntitySet Name="SD_ITEM_INFO" EntityType="Self.SD_ITEM_INFO" />
+          <AssociationSet Name="FK_ED_KPI_V_REFERENCE_ED_KPI_I" Association="Self.FK_ED_KPI_V_REFERENCE_ED_KPI_I">
+            <End Role="ED_KPI_INFO" EntitySet="ED_KPI_INFO" />
+            <End Role="ED_KPI_VALUE" EntitySet="ED_KPI_VALUE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EP_KPI_P_REFERENCE_ED_KPI_I" Association="Self.FK_EP_KPI_P_REFERENCE_ED_KPI_I">
+            <End Role="ED_KPI_INFO" EntitySet="ED_KPI_INFO" />
+            <End Role="EP_KPI_PARAM" EntitySet="EP_KPI_PARAM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EP_KPI_S_REFERENCE_ED_KPI_I" Association="Self.FK_EP_KPI_S_REFERENCE_ED_KPI_I">
+            <End Role="ED_KPI_INFO" EntitySet="ED_KPI_INFO" />
+            <End Role="EP_KPI_SET" EntitySet="EP_KPI_SET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ED_KPI_V_REFERENCE_SD_CPATS" Association="Self.FK_ED_KPI_V_REFERENCE_SD_CPATS">
+            <End Role="SD_CPATS" EntitySet="SD_CPATS" />
+            <End Role="ED_KPI_VALUE" EntitySet="ED_KPI_VALUE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EP_KPI_P_REFERENCE_SD_ITEM_" Association="Self.FK_EP_KPI_P_REFERENCE_SD_ITEM_">
+            <End Role="SD_ITEM_INFO" EntitySet="SD_ITEM_INFO" />
+            <End Role="EP_KPI_PARAM" EntitySet="EP_KPI_PARAM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SD_ITEM__REFERENCE_SD_INFO" Association="Self.FK_SD_ITEM__REFERENCE_SD_INFO">
+            <End Role="SD_INFO" EntitySet="SD_INFO" />
+            <End Role="SD_ITEM_INFO" EntitySet="SD_ITEM_INFO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KPIModelStoreContainer" CdmEntityContainer="KPIEntities">
+          <EntitySetMapping Name="ED_KPI_INFO">
+            <EntityTypeMapping TypeName="KPIModel.ED_KPI_INFO">
+              <MappingFragment StoreEntitySet="ED_KPI_INFO">
+                <ScalarProperty Name="KPI_ID" ColumnName="KPI_ID" />
+                <ScalarProperty Name="SD_CODE" ColumnName="SD_CODE" />
+                <ScalarProperty Name="KPI_CODE" ColumnName="KPI_CODE" />
+                <ScalarProperty Name="KPI_NAME" ColumnName="KPI_NAME" />
+                <ScalarProperty Name="KPI_ALIAS" ColumnName="KPI_ALIAS" />
+                <ScalarProperty Name="KPI_TYPE_CODE" ColumnName="KPI_TYPE_CODE" />
+                <ScalarProperty Name="ORDER_NO" ColumnName="ORDER_NO" />
+                <ScalarProperty Name="UPD_USER_ID" ColumnName="UPD_USER_ID" />
+                <ScalarProperty Name="UPD_DATE" ColumnName="UPD_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ED_KPI_VALUE">
+            <EntityTypeMapping TypeName="KPIModel.ED_KPI_VALUE">
+              <MappingFragment StoreEntitySet="ED_KPI_VALUE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SD_CPAT_NO" ColumnName="SD_CPAT_NO" />
+                <ScalarProperty Name="KPI_ID" ColumnName="KPI_ID" />
+                <ScalarProperty Name="INDEX_VALUE" ColumnName="INDEX_VALUE" />
+                <ScalarProperty Name="UPD_DATE" ColumnName="UPD_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EP_KPI_PARAM">
+            <EntityTypeMapping TypeName="KPIModel.EP_KPI_PARAM">
+              <MappingFragment StoreEntitySet="EP_KPI_PARAM">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SD_ITEM_ID" ColumnName="SD_ITEM_ID" />
+                <ScalarProperty Name="KPI_PARAM_NAME" ColumnName="KPI_PARAM_NAME" />
+                <ScalarProperty Name="UPD_USER_ID" ColumnName="UPD_USER_ID" />
+                <ScalarProperty Name="UPD_DATE" ColumnName="UPD_DATE" />
+                <ScalarProperty Name="KPI_ID" ColumnName="KPI_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EP_KPI_SET">
+            <EntityTypeMapping TypeName="KPIModel.EP_KPI_SET">
+              <MappingFragment StoreEntitySet="EP_KPI_SET">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="KPI_ID" ColumnName="KPI_ID" />
+                <ScalarProperty Name="KPI_DESC" ColumnName="KPI_DESC" />
+                <ScalarProperty Name="NUM_FORMULA" ColumnName="NUM_FORMULA" />
+                <ScalarProperty Name="FRA_FORMULA" ColumnName="FRA_FORMULA" />
+                <ScalarProperty Name="INVALID_FLAG" ColumnName="INVALID_FLAG" />
+                <ScalarProperty Name="UPD_USER_ID" ColumnName="UPD_USER_ID" />
+                <ScalarProperty Name="UPD_DATE" ColumnName="UPD_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAT_SD_ITEM_RESULT">
+            <EntityTypeMapping TypeName="KPIModel.PAT_SD_ITEM_RESULT">
+              <MappingFragment StoreEntitySet="PAT_SD_ITEM_RESULT">
+                <ScalarProperty Name="SD_CODE" ColumnName="SD_CODE" />
+                <ScalarProperty Name="PATIENT_ID" ColumnName="PATIENT_ID" />
+                <ScalarProperty Name="SD_ITEM_CODE" ColumnName="SD_ITEM_CODE" />
+                <ScalarProperty Name="SD_ITEM_VALUE" ColumnName="SD_ITEM_VALUE" />
+                <ScalarProperty Name="SD_ITEM_U_VALUE" ColumnName="SD_ITEM_U_VALUE" />
+                <ScalarProperty Name="UPDATE_USER_ID" ColumnName="UPDATE_USER_ID" />
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SD_CPATS">
+            <EntityTypeMapping TypeName="KPIModel.SD_CPATS">
+              <MappingFragment StoreEntitySet="SD_CPATS">
+                <ScalarProperty Name="SD_CPAT_NO" ColumnName="SD_CPAT_NO" />
+                <ScalarProperty Name="SD_CODE" ColumnName="SD_CODE" />
+                <ScalarProperty Name="SD_CPAT_DATE" ColumnName="SD_CPAT_DATE" />
+                <ScalarProperty Name="PATIENT_ID" ColumnName="PATIENT_ID" />
+                <ScalarProperty Name="UPD_DATE" ColumnName="UPD_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SD_INFO">
+            <EntityTypeMapping TypeName="KPIModel.SD_INFO">
+              <MappingFragment StoreEntitySet="SD_INFO">
+                <ScalarProperty Name="SD_CODE" ColumnName="SD_CODE" />
+                <ScalarProperty Name="SD_NAME" ColumnName="SD_NAME" />
+                <ScalarProperty Name="SD_ALIAS" ColumnName="SD_ALIAS" />
+                <ScalarProperty Name="ORDER_NO" ColumnName="ORDER_NO" />
+                <ScalarProperty Name="SC_FLAG" ColumnName="SC_FLAG" />
+                <ScalarProperty Name="EV_FLAG" ColumnName="EV_FLAG" />
+                <ScalarProperty Name="UPD_DATE" ColumnName="UPD_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SD_ITEM_INFO">
+            <EntityTypeMapping TypeName="KPIModel.SD_ITEM_INFO">
+              <MappingFragment StoreEntitySet="SD_ITEM_INFO">
+                <ScalarProperty Name="SD_ITEM_ID" ColumnName="SD_ITEM_ID" />
+                <ScalarProperty Name="SD_CODE" ColumnName="SD_CODE" />
+                <ScalarProperty Name="SD_ITEM_CODE" ColumnName="SD_ITEM_CODE" />
+                <ScalarProperty Name="SD_ITEM_NAME" ColumnName="SD_ITEM_NAME" />
+                <ScalarProperty Name="DATA_TYPE" ColumnName="DATA_TYPE" />
+                <ScalarProperty Name="SD_ITEM_ALIAS" ColumnName="SD_ITEM_ALIAS" />
+                <ScalarProperty Name="ORDER_NO" ColumnName="ORDER_NO" />
+                <ScalarProperty Name="ITEM_TYPE_CODE" ColumnName="ITEM_TYPE_CODE" />
+                <ScalarProperty Name="ITEM_DATA_TYPE" ColumnName="ITEM_DATA_TYPE" />
+                <ScalarProperty Name="ITEM_UNIT" ColumnName="ITEM_UNIT" />
+                <ScalarProperty Name="UPD_USER_ID" ColumnName="UPD_USER_ID" />
+                <ScalarProperty Name="UPD_DATE" ColumnName="UPD_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7beb17f0dda04ef29ba1b3bf04febdd5" Name="Diagram1">
+        <EntityTypeShape EntityType="KPIModel.ED_KPI_INFO" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KPIModel.ED_KPI_VALUE" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KPIModel.EP_KPI_PARAM" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KPIModel.EP_KPI_SET" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KPIModel.PAT_SD_ITEM_RESULT" Width="1.5" PointX="2.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KPIModel.SD_CPATS" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KPIModel.SD_INFO" Width="1.5" PointX="1.5" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KPIModel.SD_ITEM_INFO" Width="1.5" PointX="3.75" PointY="15" IsExpanded="true" />
+        <AssociationConnector Association="KPIModel.FK_ED_KPI_V_REFERENCE_ED_KPI_I" ManuallyRouted="false" />
+        <AssociationConnector Association="KPIModel.FK_EP_KPI_P_REFERENCE_ED_KPI_I" ManuallyRouted="false" />
+        <AssociationConnector Association="KPIModel.FK_EP_KPI_S_REFERENCE_ED_KPI_I" ManuallyRouted="false" />
+        <AssociationConnector Association="KPIModel.FK_ED_KPI_V_REFERENCE_SD_CPATS" ManuallyRouted="false" />
+        <AssociationConnector Association="KPIModel.FK_EP_KPI_P_REFERENCE_SD_ITEM_" ManuallyRouted="false" />
+        <AssociationConnector Association="KPIModel.FK_SD_ITEM__REFERENCE_SD_INFO" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
