@@ -28,9 +28,9 @@ namespace KPIWebAPI
         public string KPI_NAME { get; set; }
         public string KPI_ALIAS { get; set; }
         public string KPI_TYPE_CODE { get; set; }
-        public Nullable<int> ORDER_NO { get; set; }
+        public int? ORDER_NO { get; set; }
         public string UPD_USER_ID { get; set; }
-        public Nullable<System.DateTime> UPD_DATE { get; set; }
+        public DateTime? UPD_DATE { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ED_KPI_VALUE> ED_KPI_VALUE { get; set; }

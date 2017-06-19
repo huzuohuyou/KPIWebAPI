@@ -45,7 +45,7 @@ namespace KPIWebAPI.Models
                             note += string.Format("编码：{0} 名称：{1} 数据类型：{2}\n", dataItem.SD_ITEM_CODE.Trim(), dataItem.SD_ITEM_NAME.Trim(), dataItem.ITEM_DATA_TYPE.Trim());
                         });
                     }
-                    return string.Format("'''{2}'''\n{0}{1}", param, body,note);
+                    return string.Format("'''\n{2}'''\n{0}{1}", param, body,note);
                 }
                 catch (Exception)
                 {

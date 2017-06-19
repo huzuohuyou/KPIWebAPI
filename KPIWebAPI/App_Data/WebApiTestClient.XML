@@ -481,5 +481,45 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="M:KPIWebAPI.Controllers.DataItemController.SDDataItemDict(System.String)">
+            <summary>
+            返回病种下的数据项
+            </summary>
+            <param name="sdCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KPIWebAPI.Controllers.DataItemController.KPIFormulaBody(System.Int32)">
+            <summary>
+            返回KPI指标的方法体
+            </summary>
+            <param name="kpiId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KPIWebAPI.Controllers.DataItemController.KPIParams(System.Int32)">
+            <summary>
+            获取KPI对应的参数
+            </summary>
+            <param name="kpiId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KPIWebAPI.Controllers.DataItemController.SavaFormulaBody(KPIWebAPI.Models.FormulaBody)">
+            <summary>
+            更新KPI指标方法体
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KPIWebAPI.Controllers.DataItemController.SaveFormulaParam(System.Collections.Generic.List{KPIWebAPI.Models.Param})">
+            <summary>
+            更新KPI指标算法参数
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KPIWebAPI.Controllers.KPIController.RefreshKPIList">
+            <summary>
+            刷新KPI列表
+            </summary>
+        </member>
     </members>
 </doc>

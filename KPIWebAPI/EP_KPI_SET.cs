@@ -15,13 +15,13 @@ namespace KPIWebAPI
     public partial class EP_KPI_SET
     {
         public int ID { get; set; }
-        public Nullable<int> KPI_ID { get; set; }
+        public int? KPI_ID { get; set; }
         public string KPI_DESC { get; set; }
         public string NUM_FORMULA { get; set; }
         public string FRA_FORMULA { get; set; }
-        public Nullable<int> INVALID_FLAG { get; set; }
+        public int? INVALID_FLAG { get; set; }
         public string UPD_USER_ID { get; set; }
-        public Nullable<System.DateTime> UPD_DATE { get; set; }
+        public DateTime? UPD_DATE { get; set; }
     
         public virtual ED_KPI_INFO ED_KPI_INFO { get; set; }
     }
