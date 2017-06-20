@@ -8,6 +8,9 @@ using KPIWebAPI.Models;
 
 namespace KPIWebAPI.Controllers
 {
+    /// <summary>
+    /// 指标API
+    /// </summary>
     [RoutePrefix("kpi")]
     public class KPIController : ApiController, IKPI
     {
@@ -38,7 +41,6 @@ namespace KPIWebAPI.Controllers
             return list;
         }
 
-
         /// <summary>
         ///  获取KPI算法的参数[未实现]
         /// </summary>
@@ -49,7 +51,6 @@ namespace KPIWebAPI.Controllers
         {
             throw new NotImplementedException();
         }
-
 
         /// <summary>
         /// 通过KPIId获取对应脚本

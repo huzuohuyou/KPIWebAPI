@@ -7,14 +7,13 @@ using System.Web.Http;
 
 namespace KPIWebAPI.Controllers
 {
+    /// <summary>
+    /// KPI公式接口API
+    /// </summary>
     [RoutePrefix("formula")]
     public class DataItemController : ApiController, IDataItem
     {
-        public Tuple<string, bool> CheckFormula(string script, List<Param> list)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         /// <summary>
         /// 返回病种下的数据项
         /// </summary>
@@ -156,9 +155,6 @@ namespace KPIWebAPI.Controllers
             }
         }
 
-        public void ShowDataItemDict(string sdCode)
-        {
-            throw new NotImplementedException();
-        }
+    
     }
 }

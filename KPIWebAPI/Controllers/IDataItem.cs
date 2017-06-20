@@ -6,12 +6,11 @@ namespace KPIWebAPI.Controllers
 {
     public interface IDataItem
     {
-        void ShowDataItemDict(string sdCode);
         List<Param> SDDataItemDict(string sdCode);
-        List<Param> KPIParams(int kpiId);
-        FormulaBody KPIFormulaBody(int kpiId);
 
-        Tuple<string, bool> CheckFormula(string script, List<Param> list);
+        List<Param> KPIParams(int kpiId);
+
+        FormulaBody KPIFormulaBody(int kpiId);
 
         int SaveFormulaParam(List<Param> list);
 
