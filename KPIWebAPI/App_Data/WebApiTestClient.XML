@@ -516,6 +516,26 @@
             <param name="list"></param>
             <returns></returns>
         </member>
+        <member name="M:KPIWebAPI.Controllers.KPIController.GetKPIList">
+            <summary>
+            获取KPI算法列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:KPIWebAPI.Controllers.KPIController.GetKPIParams(System.Int32)">
+            <summary>
+             获取KPI算法的参数[未实现]
+            </summary>
+            <param name="kpiId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KPIWebAPI.Controllers.KPIController.KpiScript(System.Int32)">
+            <summary>
+            通过KPIId获取对应脚本
+            </summary>
+            <param name="kpiId"></param>
+            <returns></returns>
+        </member>
         <member name="M:KPIWebAPI.Controllers.KPIController.RefreshKPIList">
             <summary>
             刷新KPI列表

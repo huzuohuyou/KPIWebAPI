@@ -7,6 +7,7 @@ namespace KPIWebAPI.Controllers
     {
         List<KPINode> GetKPIList();
 
+        KPINode KpiScript(int kpiId);
         
         void RefreshKPIList();
     }
