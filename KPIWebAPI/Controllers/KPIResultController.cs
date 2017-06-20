@@ -25,9 +25,20 @@ namespace KPIWebAPI.Controllers
                 var result = new List<dynamic>();
                 using (var db = new KPIContext())
                 {
-                    kparam.PatientList.ForEach(p =>
+                    kparam.PatientList.ForEach(
+                    p =>
                     {
-                        db.ED_KPI_INFO.ToList().ForEach(
+                        List<ED_KPI_INFO> mlist;
+                        if (kparam.KpiId == "")
+                        {
+                            mlist = db.ED_KPI_INFO.ToList().ToList();
+                        }
+                        else
+                        {
+                            mlist = db.ED_KPI_INFO.ToList().Where(k => k.KPI_ID == int.Parse(kparam.KpiId)).ToList();
+                        }
+                        //kparam.KpiId == "" ? mlist = db.ED_KPI_INFO.ToList().ToList() : mlist = db.ED_KPI_INFO.ToList().Where(k => k.KPI_ID == int.Parse(kparam.KpiId)).ToList();
+                        mlist.ForEach(
                         r =>
                         {
                             var body = db.EP_KPI_SET.FirstOrDefault(b => b.KPI_ID == r.KPI_ID);
@@ -38,11 +49,12 @@ namespace KPIWebAPI.Controllers
                             int rr;
                             int.TryParse(value, out rr);
                             StoreKPI(new ED_KPI_VALUE() { KPI_ID = r.KPI_ID, SD_CPAT_NO = p, INDEX_VALUE = rr });
-                            result.Add(new { sd_code = kparam.SdCode, kpi_id = r.KPI_ID, patient_id = p, kpi_value = value } );
+                            result.Add(new { sd_code = kparam.SdCode, kpi_id = r.KPI_ID, patient_id = p, kpi_value = value });
                             //存库.. 
                         }
                         );
                     }
+                    
                     );
                 }
                 return result;
