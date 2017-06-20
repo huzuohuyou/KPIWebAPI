@@ -18,11 +18,11 @@ namespace KPIWebAPI.Controllers
         /// <param kparam="sdCode">参数实体</param>
         /// <returns></returns>
         [Route("sdcode"),HttpPost]
-        public List<string> Run([FromBody]KpiResultParam kparam)
+        public List<dynamic> Run([FromBody]KpiResultParam kparam)
         {
             try
             {
-                var result = new List<string>();
+                var result = new List<dynamic>();
                 using (var db = new KPIContext())
                 {
                     kparam.PatientList.ForEach(p =>
@@ -38,7 +38,7 @@ namespace KPIWebAPI.Controllers
                             int rr;
                             int.TryParse(value, out rr);
                             StoreKPI(new ED_KPI_VALUE() { KPI_ID = r.KPI_ID, SD_CPAT_NO = p, INDEX_VALUE = rr });
-                            result.Add(string.Format("sd_code:{0} kpi_id:{1} patient_id:{3} kpi_value:{2}", kparam.SdCode, r.KPI_ID, value, p));
+                            result.Add(new { sd_code = kparam.SdCode, kpi_id = r.KPI_ID, patient_id = p, kpi_value = value } );
                             //存库.. 
                         }
                         );
@@ -88,6 +88,7 @@ namespace KPIWebAPI.Controllers
             }
         }
 
+        [NonAction]
         private void StoreKPI(ED_KPI_VALUE value)
         {
             try
