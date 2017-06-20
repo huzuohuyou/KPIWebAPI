@@ -551,6 +551,11 @@
             刷新KPI列表
             </summary>
         </member>
+        <member name="T:KPIWebAPI.Controllers.KPIResultController">
+            <summary>
+            计算KPI结果API
+            </summary>
+        </member>
         <member name="M:KPIWebAPI.Controllers.KPIResultController.Run(KPIWebAPI.Models.KpiResultParam)">
             <summary>
             计算病人KPI

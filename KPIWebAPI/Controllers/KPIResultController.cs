@@ -6,6 +6,9 @@ using System.Web.Http;
 
 namespace KPIWebAPI.Controllers
 {
+    /// <summary>
+    /// 计算KPI结果API
+    /// </summary>
     [RoutePrefix("kpiresult")]
     public class KPIResultController : ApiController, ICalKPIJob
     {
@@ -31,7 +34,11 @@ namespace KPIWebAPI.Controllers
                             var param = db.EP_KPI_PARAM.ToList().Where(b => b.KPI_ID == r.KPI_ID).ToList();
                             KPIFormula formula = new KPIFormula(body, param);
                             UsingPython python = new UsingPython(formula.KPIScript);
-                            result.Add(string.Format("sd_code:{0} kpi_id:{1} patient_id:{3} kpi_value:{2}",kparam.SdCode,r.KPI_ID, python.ExcuteScriptFile(GetParamList(p, param)).ToString(),p));
+                            var value = python.ExcuteScriptFile(GetParamList(p, param)).ToString();
+                            int rr;
+                            int.TryParse(value, out rr);
+                            StoreKPI(new ED_KPI_VALUE() { KPI_ID = r.KPI_ID, SD_CPAT_NO = p, INDEX_VALUE = rr });
+                            result.Add(string.Format("sd_code:{0} kpi_id:{1} patient_id:{3} kpi_value:{2}", kparam.SdCode, r.KPI_ID, value, p));
                             //存库.. 
                         }
                         );
@@ -79,6 +86,24 @@ namespace KPIWebAPI.Controllers
                 && r.SD_ITEM_CODE == sd_item_info.SD_ITEM_CODE.Trim()
                 && r.PATIENT_ID == patient_id)?.SD_ITEM_VALUE;
             }
+        }
+
+        private void StoreKPI(ED_KPI_VALUE value)
+        {
+            try
+            {
+                using (var db = new KPIContext())
+                {
+                    db.ED_KPI_VALUE.Add(value);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
     }
 }
