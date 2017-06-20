@@ -9,6 +9,5 @@ namespace KPIWebAPI.Controllers
 
         KPINode KpiScript(int kpiId);
         
-        void RefreshKPIList();
     }
 }

@@ -40,17 +40,6 @@ namespace KPIWebAPI.Controllers
         }
 
         /// <summary>
-        ///  获取KPI算法的参数[未实现]
-        /// </summary>
-        /// <param name="kpiId"></param>
-        /// <returns></returns>
-        [Route("params")]
-        public List<Param> GetKPIParams(int kpiId)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
         /// 通过KPIId获取对应脚本
         /// </summary>
         /// <param name="kpiId"></param>
@@ -79,12 +68,6 @@ namespace KPIWebAPI.Controllers
             }
         }
 
-        /// <summary>
-        /// 刷新KPI列表
-        /// </summary>
-        public void RefreshKPIList()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
