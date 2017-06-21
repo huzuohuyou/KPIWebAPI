@@ -13,7 +13,7 @@ namespace KPIWebAPI.Controllers
     public class KPIResultController : ApiController, ICalKPIJob
     {
         /// <summary>
-        /// 计算病人KPI
+        /// 计算病人KPI，并存库，参数自取
         /// </summary>
         /// <param kparam="sdCode">参数实体</param>
         /// <returns></returns>
@@ -55,6 +55,58 @@ namespace KPIWebAPI.Controllers
                         );
                     }
                     
+                    );
+                }
+                return result;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 返回KPI结果值，不存库，参数由外部提供
+        /// </summary>
+        /// <param name="kparam"></param>
+        /// <returns></returns>
+        [Route("params"), HttpPost]
+        public List<dynamic> RunWithParam([FromBody]KpiParam kparam)
+        {
+            try
+            {
+                var result = new List<dynamic>();
+                using (var db = new KPIContext())
+                {
+                    kparam.PatientList.ForEach(
+                    p =>
+                    {
+                        List<ED_KPI_INFO> mlist;
+                        if (kparam.KpiId == "")
+                        {
+                            mlist = db.ED_KPI_INFO.ToList().ToList();
+                        }
+                        else
+                        {
+                            mlist = db.ED_KPI_INFO.ToList().Where(k => k.KPI_ID == int.Parse(kparam.KpiId)).ToList();
+                        }
+                        //kparam.KpiId == "" ? mlist = db.ED_KPI_INFO.ToList().ToList() : mlist = db.ED_KPI_INFO.ToList().Where(k => k.KPI_ID == int.Parse(kparam.KpiId)).ToList();
+                        mlist.ForEach(
+                        r =>
+                        {
+                            var body = db.EP_KPI_SET.FirstOrDefault(b => b.KPI_ID == r.KPI_ID);
+                            var param = db.EP_KPI_PARAM.ToList().Where(b => b.KPI_ID == r.KPI_ID).ToList();
+                            KPIFormula formula = new KPIFormula(body, param);
+                            UsingPython python = new UsingPython(formula.KPIScript);
+                            var value = python.ExcuteScriptFile(kparam.KParamList).ToString();
+                            int rr;
+                            int.TryParse(value, out rr);
+                            result.Add(new { sd_code = kparam.SdCode, kpi_id = r.KPI_ID, patient_id = p, kpi_value = value });
+                            //存库.. 
+                        }
+                        );
+                    }
+
                     );
                 }
                 return result;

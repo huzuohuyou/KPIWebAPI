@@ -67,7 +67,29 @@ namespace KPIWebAPI.Controllers
             }
         }
 
+        public object ExcuteScriptFile(List<SimpleParam> paramList)
+        {
+            try
+            {
+                scope.SetVariable("result", "");
+                foreach (var item in paramList)
+                {
+                    if (item.FixValue == null)
+                    {
+                        throw new Exception(item.Code.Trim() + " is null");
+                    }
+                    scope.SetVariable(item.Code.Trim(), item.FixValue);
+                }
+                source.Execute(scope);
+                return scope.GetVariable("result").ToString();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
-       
+
+
     }
 }

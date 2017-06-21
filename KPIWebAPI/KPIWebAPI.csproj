@@ -292,8 +292,10 @@
     <Compile Include="Models\KPIContext.cs" />
     <Compile Include="Models\KPIFormula.cs" />
     <Compile Include="Models\KPINode.cs" />
+    <Compile Include="Models\KpiParam.cs" />
     <Compile Include="Models\KpiResultParam.cs" />
     <Compile Include="Models\Param.cs" />
+    <Compile Include="Models\SimpleParam.cs" />
     <Compile Include="PAT_SD_ITEM_RESULT.cs">
       <DependentUpon>KPIModel.tt</DependentUpon>
     </Compile>

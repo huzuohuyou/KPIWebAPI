@@ -532,24 +532,12 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:KPIWebAPI.Controllers.KPIController.GetKPIParams(System.Int32)">
-            <summary>
-             获取KPI算法的参数[未实现]
-            </summary>
-            <param name="kpiId"></param>
-            <returns></returns>
-        </member>
         <member name="M:KPIWebAPI.Controllers.KPIController.KpiScript(System.Int32)">
             <summary>
             通过KPIId获取对应脚本
             </summary>
             <param name="kpiId"></param>
             <returns></returns>
-        </member>
-        <member name="M:KPIWebAPI.Controllers.KPIController.RefreshKPIList">
-            <summary>
-            刷新KPI列表
-            </summary>
         </member>
         <member name="T:KPIWebAPI.Controllers.KPIResultController">
             <summary>
@@ -558,9 +546,16 @@
         </member>
         <member name="M:KPIWebAPI.Controllers.KPIResultController.Run(KPIWebAPI.Models.KpiResultParam)">
             <summary>
-            计算病人KPI
+            计算病人KPI，并存库，参数自取
             </summary>
             <param kparam="sdCode">参数实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:KPIWebAPI.Controllers.KPIResultController.RunWithParam(KPIWebAPI.Models.KpiParam)">
+            <summary>
+            返回KPI结果值，不存库，参数由外部提供
+            </summary>
+            <param name="kparam"></param>
             <returns></returns>
         </member>
     </members>
