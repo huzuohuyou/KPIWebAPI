@@ -1,24 +1,19 @@
 ﻿<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h1>Kpi Web Api</h1>
+    <p class="lead">Kpi Web Api对外提供KPI计算功能、公式编辑功能，接口测试功能，具体详见调用API页</p>
 </div>
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
-        a broad range of clients, including browsers and mobile devices. ASP.NET Web API
-        is an ideal platform for building RESTful applications on the .NET Framework.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
+        <h2>计算病人KPI</h2>
+        <p>调用baseurl+kpiresult\params接口,传参病人id列表，病种代码，kpiid，数据项实体列表；数据项实体
+        列表属性包括：数据项编码、数据项类型（int/double/datetime/string）数据项值；返回结果为KPI计算结果列表；</p>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
+        <h2>公式编辑接口</h2>
+        <p>提供了KPI字典展示，kpi公式编辑，数据项选取，分母，分子公式编辑，公式保存校验等功能；</p>
     </div>
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
+        <h2>接口测试</h2>
+        <p>在API接口页，点击进入对应接口，点击右下角测试按钮即可进行接口测试；</p>
     </div>
 </div>
