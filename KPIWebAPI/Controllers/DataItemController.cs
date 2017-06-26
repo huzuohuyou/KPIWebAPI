@@ -104,7 +104,7 @@ namespace KPIWebAPI.Controllers
         /// <param name="body"></param>
         /// <returns></returns>
         [Route("kpibody"), HttpPut]
-        public int SavaFormulaBody([FromBody]FormulaBody body)
+        public FormulaBody SavaFormulaBody([FromBody]FormulaBody body)
         {
             try
             {
@@ -115,7 +115,9 @@ namespace KPIWebAPI.Controllers
                         db.EP_KPI_SET.Remove(r);
                     });
                     db.EP_KPI_SET.Add(new EP_KPI_SET() { KPI_ID = int.Parse(body.KPIId), KPI_DESC = body.Note, NUM_FORMULA = body.FenMu, FRA_FORMULA = body.FenZi });
-                    return db.SaveChanges();
+                    db.SaveChanges();
+                    EP_KPI_SET set = db.EP_KPI_SET.ToList().FirstOrDefault(r => r.KPI_ID == int.Parse(body.KPIId));
+                    return new FormulaBody() {KPIId = set.KPI_ID.ToString(),Note = set.KPI_DESC,FenZi=set.NUM_FORMULA,FenMu=set.FRA_FORMULA } ;
                 }
             }
             catch (Exception ex)
@@ -131,21 +133,27 @@ namespace KPIWebAPI.Controllers
         /// <param name="list"></param>
         /// <returns></returns>
         [Route("kpiparam"), HttpPut]
-        public int SaveFormulaParam([FromBody]List<Param> list)
+        public List<Param> SaveFormulaParam([FromBody]List<Param> list)
         {
             try
             {
+                List<Param> result = new List<Param>();
                 using (var db = new KPIContext())
                 {
-                    db.EP_KPI_PARAM.ToList().Where(r => r.KPI_ID == list[0].KPIId).ToList().ForEach(r => {
+                    db.EP_KPI_PARAM.ToList().Where(r => r.KPI_ID == list[0].KPIId).ToList().ForEach(r =>
+                    {
                         db.EP_KPI_PARAM.Remove(r);
                     });
                     list.ForEach(r =>
                     {
-                        db.EP_KPI_PARAM.Add(new EP_KPI_PARAM() { SD_ITEM_ID=r.DataItemId, KPI_PARAM_NAME =r.Code,KPI_ID=r.KPIId});
+                        db.EP_KPI_PARAM.Add(new EP_KPI_PARAM() { SD_ITEM_ID = r.DataItemId, KPI_PARAM_NAME = r.Code, KPI_ID = r.KPIId });
                     }
                     );
-                    return db.SaveChanges();
+                    db.SaveChanges();
+                    db.EP_KPI_PARAM.ToList().Where(r => r.KPI_ID == list[0].KPIId).ToList().ForEach(
+                        r => result.Add(new Param() { KPIId = (int)r.KPI_ID, Code = r.KPI_PARAM_NAME, DataItemId = r.SD_ITEM_ID })
+                        );
+                    return result;
                 }
             }
             catch (Exception)
@@ -155,6 +163,6 @@ namespace KPIWebAPI.Controllers
             }
         }
 
-    
+
     }
 }

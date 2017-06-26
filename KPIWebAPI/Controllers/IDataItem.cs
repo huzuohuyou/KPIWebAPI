@@ -12,8 +12,8 @@ namespace KPIWebAPI.Controllers
 
         FormulaBody KPIFormulaBody(int kpiId);
 
-        int SaveFormulaParam(List<Param> list);
+        List<Param> SaveFormulaParam(List<Param> list);
 
-        int SavaFormulaBody(FormulaBody body);
+        FormulaBody SavaFormulaBody(FormulaBody body);
     }
 }
