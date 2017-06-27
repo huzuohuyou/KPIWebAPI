@@ -103,7 +103,7 @@ namespace KPIWebAPI.Controllers
         /// </summary>
         /// <param name="body"></param>
         /// <returns></returns>
-        [Route("kpibody"), HttpPut]
+        [NonAction]
         public FormulaBody SavaFormulaBody([FromBody]FormulaBody body)
         {
             try
@@ -128,11 +128,22 @@ namespace KPIWebAPI.Controllers
         }
 
         /// <summary>
+        /// 保存KPI算法公式
+        /// </summary>
+        /// <param name="f"></param>
+        /// <returns></returns>
+        [Route("current"), HttpPut]
+        public Formula SaveFormula([FromBody]Formula f)
+        {
+            return new Formula() {Param= SaveFormulaParam(f.Param),Body= SavaFormulaBody(f.Body) };
+        }
+
+        /// <summary>
         /// 更新KPI指标算法参数
         /// </summary>
         /// <param name="list"></param>
         /// <returns></returns>
-        [Route("kpiparam"), HttpPut]
+        [NonAction]
         public List<Param> SaveFormulaParam([FromBody]List<Param> list)
         {
             try
@@ -151,7 +162,7 @@ namespace KPIWebAPI.Controllers
                     );
                     db.SaveChanges();
                     db.EP_KPI_PARAM.ToList().Where(r => r.KPI_ID == list[0].KPIId).ToList().ForEach(
-                        r => result.Add(new Param() { KPIId = (int)r.KPI_ID, Code = r.KPI_PARAM_NAME, DataItemId = r.SD_ITEM_ID })
+                        r => result.Add(new Param() { KPIId = (int)r.KPI_ID, Code = r.KPI_PARAM_NAME, DataItemId = r.SD_ITEM_ID,Name=r.KPI_PARAM_NAME })
                         );
                     return result;
                 }

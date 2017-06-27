@@ -514,6 +514,13 @@
             <param name="body"></param>
             <returns></returns>
         </member>
+        <member name="M:KPIWebAPI.Controllers.DataItemController.SaveFormula(KPIWebAPI.Models.Formula)">
+            <summary>
+            保存KPI算法公式
+            </summary>
+            <param name="f"></param>
+            <returns></returns>
+        </member>
         <member name="M:KPIWebAPI.Controllers.DataItemController.SaveFormulaParam(System.Collections.Generic.List{KPIWebAPI.Models.Param})">
             <summary>
             更新KPI指标算法参数
