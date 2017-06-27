@@ -54,9 +54,14 @@ namespace KPIWebAPI.Controllers
                 {
                     if (item.FixValue==null)
                     {
-                        throw new Exception(item.Code.Trim()+" is null");
+                        scope.SetVariable(item.Code.Trim(), 0);
+                        //throw new Exception(item.Code.Trim()+" is null");
                     }
-                    scope.SetVariable(item.Code.Trim(), item.FixValue);
+                    else
+                    {
+                        scope.SetVariable(item.Code.Trim(), item.FixValue);
+                    }
+                    
                 }
                 source.Execute(scope);
                 return scope.GetVariable("result").ToString();

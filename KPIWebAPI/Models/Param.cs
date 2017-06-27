@@ -16,6 +16,7 @@ namespace KPIWebAPI.Models
         {
             get { return string.Format("字段：{0} 描述：{1} 数据类型：{2}", Code?.Trim(), Name?.Trim(),DataType?.ToString())?.Trim(); }
         }
+        private dynamic _fixValue;
         public dynamic FixValue
         {
             get
