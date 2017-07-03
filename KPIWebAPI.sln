@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KPIWebAPI", "KPIWebAPI\KPIWebAPI.csproj", "{393EE3A7-9211-46C4-9DEF-0174857FA66A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KPIWebApi.Models", "KPIWebApi.Models\KPIWebApi.Models.csproj", "{153C162C-20BD-404C-8A6B-1BDDA63598DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KPIWebApi.ViewModels", "KPIWebApi.ViewModels\KPIWebApi.ViewModels.csproj", "{5961A3A1-7FB1-46E6-9B29-926CC9A591BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{393EE3A7-9211-46C4-9DEF-0174857FA66A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{393EE3A7-9211-46C4-9DEF-0174857FA66A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{393EE3A7-9211-46C4-9DEF-0174857FA66A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{153C162C-20BD-404C-8A6B-1BDDA63598DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{153C162C-20BD-404C-8A6B-1BDDA63598DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{153C162C-20BD-404C-8A6B-1BDDA63598DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{153C162C-20BD-404C-8A6B-1BDDA63598DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5961A3A1-7FB1-46E6-9B29-926CC9A591BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5961A3A1-7FB1-46E6-9B29-926CC9A591BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5961A3A1-7FB1-46E6-9B29-926CC9A591BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5961A3A1-7FB1-46E6-9B29-926CC9A591BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
