@@ -51,6 +51,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CPAT_CHECK_RECORD.cs">
+      <DependentUpon>XKPI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPAT_DIAGNOSIS.cs">
+      <DependentUpon>XKPI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPAT_EMR_RECORD.cs">
+      <DependentUpon>XKPI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPAT_IN_ORDERS.cs">
+      <DependentUpon>XKPI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPAT_IN_PATIENT.cs">
+      <DependentUpon>XKPI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPAT_OUT_EMR.cs">
+      <DependentUpon>XKPI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPAT_OUT_PATIENT.cs">
+      <DependentUpon>XKPI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPAT_OUT_RECIPE.cs">
+      <DependentUpon>XKPI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPAT_PATHOLOGY_RECORD.cs">
+      <DependentUpon>XKPI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPAT_TEST_RECORD.cs">
+      <DependentUpon>XKPI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPAT_TEST_RESULT.cs">
+      <DependentUpon>XKPI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPAT_TEST_RESULT_GERM.cs">
+      <DependentUpon>XKPI.tt</DependentUpon>
+    </Compile>
     <Compile Include="ED_KPI_INFO.cs">
       <DependentUpon>KPIModel.tt</DependentUpon>
     </Compile>
@@ -92,6 +128,22 @@
     <Compile Include="SD_ITEM_INFO.cs">
       <DependentUpon>KPIModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="XKPI.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XKPI.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="XKPI.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XKPI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="XKPI.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XKPI.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="XKPIContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="KPIModel.edmx">
@@ -110,6 +162,16 @@
       <DependentUpon>KPIModel.edmx</DependentUpon>
       <LastGenOutput>KPIModel.cs</LastGenOutput>
     </Content>
+    <Content Include="XKPI.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>XKPI.edmx</DependentUpon>
+      <LastGenOutput>XKPI.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="XKPI.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>XKPI.edmx</DependentUpon>
+      <LastGenOutput>XKPI.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="KPIModel.edmx.diagram">
@@ -119,6 +181,16 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <EntityDeploy Include="XKPI.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>XKPI.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="XKPI.edmx.diagram">
+      <DependentUpon>XKPI.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

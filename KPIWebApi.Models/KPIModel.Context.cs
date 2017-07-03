@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KPIWebAPI
+namespace KPIWebApi.Models
 {
     using System;
     using System.Data.Entity;

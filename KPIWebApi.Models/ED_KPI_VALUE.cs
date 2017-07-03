@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KPIWebAPI
+namespace KPIWebApi.Models
 {
     using System;
     using System.Collections.Generic;
@@ -17,7 +17,7 @@ namespace KPIWebAPI
         public int ID { get; set; }
         public string SD_CPAT_NO { get; set; }
         public Nullable<int> KPI_ID { get; set; }
-        public int? INDEX_VALUE { get; set; }
+        public Nullable<int> INDEX_VALUE { get; set; }
         public Nullable<System.DateTime> UPD_DATE { get; set; }
     
         public virtual ED_KPI_INFO ED_KPI_INFO { get; set; }

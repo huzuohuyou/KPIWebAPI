@@ -565,7 +565,7 @@
             <param name="kparam"></param>
             <returns></returns>
         </member>
-        <member name="M:KPIWebAPI.Controllers.KPIResultController.GetParamList(System.String,System.Collections.Generic.List{KPIWebAPI.EP_KPI_PARAM})">
+        <member name="M:KPIWebAPI.Controllers.KPIResultController.GetParamList(System.String,System.Collections.Generic.List{KPIWebApi.Models.EP_KPI_PARAM})">
             <summary>
             获取参数列表
             </summary>
@@ -573,7 +573,7 @@
             <param name="ep_kpi_param_List"></param>
             <returns></returns>
         </member>
-        <member name="M:KPIWebAPI.Controllers.KPIResultController.GetParamValue(KPIWebAPI.SD_ITEM_INFO,System.String)">
+        <member name="M:KPIWebAPI.Controllers.KPIResultController.GetParamValue(KPIWebApi.Models.SD_ITEM_INFO,System.String)">
             <summary>
             获取参数值
             </summary>
@@ -581,7 +581,7 @@
             <param name="patient_id"></param>
             <returns></returns>
         </member>
-        <member name="M:KPIWebAPI.Controllers.KPIResultController.StoreKPI(KPIWebAPI.ED_KPI_VALUE)">
+        <member name="M:KPIWebAPI.Controllers.KPIResultController.StoreKPI(KPIWebApi.Models.ED_KPI_VALUE)">
             <summary>
             存储KPI值
             </summary>

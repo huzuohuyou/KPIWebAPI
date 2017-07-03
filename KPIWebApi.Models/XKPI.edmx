@@ -1,0 +1,1126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HJ_GZFE_SDRModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CPAT_CHECK_RECORD">
+          <Key>
+            <PropertyRef Name="CHECK_ID" />
+          </Key>
+          <Property Name="CHECK_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PATIENT_NO" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="IN_FLAG" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PATIENT_ID" Type="varchar" MaxLength="60" />
+          <Property Name="MO_CHECK_NO" Type="varchar" MaxLength="60" />
+          <Property Name="APPLY_NO" Type="varchar" MaxLength="60" />
+          <Property Name="SYSTEM_CODE" Type="int" />
+          <Property Name="CHECK_TYPE" Type="varchar" MaxLength="20" />
+          <Property Name="CHECK_ITEM_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="CHECK_ITEM_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="APPLY_DATE" Type="datetime" />
+          <Property Name="APPLY_DEPT_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="APPLY_DEPT_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="RECEIVE_DATE" Type="datetime" />
+          <Property Name="CHECK_DATE" Type="datetime" />
+          <Property Name="EXEC_DEPT_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="EXEC_DEPT_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="BODY_PART_NAME" Type="varchar" MaxLength="200" />
+          <Property Name="CHECK_RESULT_TYPE" Type="varchar" MaxLength="200" />
+          <Property Name="REPORT_OBJECTIVE" Type="text" />
+          <Property Name="REPORT_SUBJECTIVE" Type="text" />
+          <Property Name="REPORT_RESULT" Type="text" />
+          <Property Name="REPORT_DATE" Type="datetime" />
+          <Property Name="REPORT_DOCTOR_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="UPD_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CPAT_DIAGNOSIS">
+          <Key>
+            <PropertyRef Name="DIAG_ID" />
+          </Key>
+          <Property Name="DIAG_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PATIENT_NO" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="IN_FLAG" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PATIENT_ID" Type="varchar" MaxLength="60" />
+          <Property Name="DIAG_TYPE_CODE" Type="int" />
+          <Property Name="DIAG_NO" Type="int" />
+          <Property Name="DIAG_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="DIAG_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="DIAG_DATE" Type="datetime" />
+          <Property Name="TREAT_RESULT" Type="varchar" MaxLength="200" />
+          <Property Name="UPD_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CPAT_EMR_RECORD">
+          <Key>
+            <PropertyRef Name="EMR_REC_ID" />
+          </Key>
+          <Property Name="EMR_REC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PATIENT_ID" Type="varchar" MaxLength="60" />
+          <Property Name="PATIENT_NO" Type="varchar" MaxLength="60" />
+          <Property Name="EMR_TYPE_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="EMR_TYPE_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="LGCY_TYPE_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="LGCY_TYPE_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="LGCY_SUB_TYPE_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="LGCY_SUB_TYPE_NAME" Type="varchar" MaxLength="500" />
+          <Property Name="REC_CONTENT" Type="text" />
+          <Property Name="REC_CONTENT_FM" Type="text" />
+          <Property Name="REC_TYPE" Type="int" />
+          <Property Name="CREATOR_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="CREATOR_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="CREATE_DATE" Type="datetime" />
+          <Property Name="REC_PSN_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="REC_PSN_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="REC_DATE" Type="datetime" />
+          <Property Name="REC_DEPT_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="REC_DEPT_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="PARENT_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="PARENT_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="DIRECTOR_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="DIRECTOR_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="UPD_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CPAT_IN_ORDERS">
+          <Key>
+            <PropertyRef Name="MO_ORDER_NO" />
+          </Key>
+          <Property Name="MO_ORDER_NO" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="PATIENT_ID" Type="varchar" MaxLength="60" />
+          <Property Name="PATIENT_NO" Type="varchar" MaxLength="60" />
+          <Property Name="APPLY_NO" Type="varchar" MaxLength="60" />
+          <Property Name="MO_DATE" Type="datetime" />
+          <Property Name="DATE_BEGIN" Type="datetime" />
+          <Property Name="DATE_END" Type="datetime" />
+          <Property Name="ORDER_TYPE_CODE" Type="int" />
+          <Property Name="ORDER_ITEM_CODE" Type="varchar" MaxLength="60" />
+          <Property Name="ORDER_ITEM_NAME" Type="varchar" MaxLength="1000" />
+          <Property Name="LONG_FLAG" Type="int" />
+          <Property Name="OUT_DRUG_FLAG" Type="int" />
+          <Property Name="DEPT_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="DEPT_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="DOCTOR_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="STOP_DOCTOR_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="ITEM_GOODS_NAME" Type="varchar" MaxLength="1000" />
+          <Property Name="GYTJ_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="GYTJ_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="USAGE_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="USAGE_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="FREQ_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="FREQ_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="DOSE_ONCE" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="DOSE_UNIT" Type="varchar" MaxLength="20" />
+          <Property Name="QTY_TOT" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="QTY_TOT_UNIT" Type="varchar" MaxLength="20" />
+          <Property Name="CHN_MEDI_QTY" Type="int" />
+          <Property Name="USE_INTENDED_CODE" Type="int" />
+          <Property Name="EXEC_DEPT_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="EXEC_DEPT_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="EXEC_PERSON" Type="varchar" MaxLength="60" />
+          <Property Name="EXEC_DATE" Type="datetime" />
+          <Property Name="UPD_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CPAT_IN_PATIENT">
+          <Key>
+            <PropertyRef Name="PATIENT_NO" />
+          </Key>
+          <Property Name="PATIENT_NO" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="PATIENT_ID" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="IN_TIMES" Type="int" />
+          <Property Name="CASE_NO" Type="varchar" MaxLength="60" />
+          <Property Name="CARD_NO" Type="varchar" MaxLength="60" />
+          <Property Name="PATIENT_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="ID_NO" Type="varchar" MaxLength="60" />
+          <Property Name="BIRTH_DATE" Type="datetime" />
+          <Property Name="GENDER_CODE" Type="int" />
+          <Property Name="COUNTRY_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="NATION_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="MARI_STAT_CODE" Type="int" />
+          <Property Name="CHARGE_TYPE_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="CHARGE_TYPE_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="IN_DATE" Type="datetime" Nullable="false" />
+          <Property Name="OUT_DATE" Type="datetime" Nullable="false" />
+          <Property Name="IN_DEPT_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="IN_DEPT_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="AREA_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="AREA_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="OUT_DEPT_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="OUT_DEPT_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="IN_DEPT_DATE" Type="datetime" />
+          <Property Name="OUT_DEPT_DATE" Type="datetime" />
+          <Property Name="DOCTOR_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="DOCTOR_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="IN_SOURCE_CODE" Type="int" />
+          <Property Name="IN_STATUS_CODE" Type="int" />
+          <Property Name="OUT_WAY_CODE" Type="int" />
+          <Property Name="OUT_STATUS_CODE" Type="int" />
+          <Property Name="IN_DIAG_CODE" Type="varchar" MaxLength="500" />
+          <Property Name="IN_DIAG_NAME" Type="varchar" MaxLength="2000" />
+          <Property Name="OUT_DIAG_CODE" Type="varchar" MaxLength="500" />
+          <Property Name="OUT_DIAG_NAME" Type="varchar" MaxLength="2000" />
+          <Property Name="UPD_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CPAT_OUT_EMR">
+          <Key>
+            <PropertyRef Name="EMR_REC_ID" />
+          </Key>
+          <Property Name="EMR_REC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PATIENT_ID" Type="varchar" MaxLength="60" />
+          <Property Name="PATIENT_NO" Type="varchar" MaxLength="60" />
+          <Property Name="PATIENT_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="VISIT_DATE" Type="datetime" />
+          <Property Name="COMPLAINTS" Type="varchar" MaxLength="2000" />
+          <Property Name="CASE_ALLERGY" Type="varchar" MaxLength="1000" />
+          <Property Name="CASE_NOW" Type="varchar" MaxLength="2000" />
+          <Property Name="CASE_OLD" Type="varchar" MaxLength="2000" />
+          <Property Name="FIRST_VISIT_FLAG" Type="int" />
+          <Property Name="PHYSICAL" Type="varchar" MaxLength="2000" />
+          <Property Name="CHECK_ITEM_NAME" Type="varchar" MaxLength="500" />
+          <Property Name="CHECK_RESULT" Type="varchar" MaxLength="1000" />
+          <Property Name="DIAGNOSIS_CODE" Type="varchar" MaxLength="200" />
+          <Property Name="DIAGNOSIS_NAME" Type="varchar" MaxLength="500" />
+          <Property Name="CONTENT" Type="text" />
+          <Property Name="UPD_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CPAT_OUT_PATIENT">
+          <Key>
+            <PropertyRef Name="PATIENT_NO" />
+          </Key>
+          <Property Name="PATIENT_NO" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="PATIENT_ID" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="CASE_NO" Type="varchar" MaxLength="60" />
+          <Property Name="CARD_NO" Type="varchar" MaxLength="60" />
+          <Property Name="PATIENT_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="ID_NO" Type="varchar" MaxLength="60" />
+          <Property Name="BIRTH_DATE" Type="datetime" />
+          <Property Name="GENDER_CODE" Type="int" />
+          <Property Name="COUNTRY_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="NATION_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="MARI_STAT_CODE" Type="int" />
+          <Property Name="CHARGE_TYPE_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="CHARGE_TYPE_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="REG_DATE" Type="datetime" Nullable="false" />
+          <Property Name="REG_DEPT_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="REG_DEPT_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="REG_LEVEL_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="REG_LEVEL_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="SEE_NO" Type="varchar" MaxLength="20" />
+          <Property Name="SEE_DATE" Type="datetime" />
+          <Property Name="DOCTOR_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="DOCTOR_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="DIAG_CODE" Type="varchar" MaxLength="200" />
+          <Property Name="DIAG_NAME" Type="varchar" MaxLength="200" />
+          <Property Name="DIAG_DATE" Type="datetime" />
+          <Property Name="FIRST_VISIT_FLAG" Type="int" />
+          <Property Name="UPD_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CPAT_OUT_RECIPE">
+          <Key>
+            <PropertyRef Name="RECIPE_ID" />
+          </Key>
+          <Property Name="RECIPE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PATIENT_ID" Type="varchar" MaxLength="60" />
+          <Property Name="PATIENT_NO" Type="varchar" MaxLength="60" />
+          <Property Name="RECIPE_NO" Type="varchar" MaxLength="60" />
+          <Property Name="APPLY_NO" Type="varchar" MaxLength="60" />
+          <Property Name="RECIPE_DATE" Type="datetime" />
+          <Property Name="RECIPE_TYPE_CODE" Type="int" />
+          <Property Name="ITEM_CODE" Type="varchar" MaxLength="60" />
+          <Property Name="ITEM_NAME" Type="varchar" MaxLength="1000" />
+          <Property Name="DEPT_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="DEPT_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="DOCTOR_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="ITEM_GOODS_NAME" Type="varchar" MaxLength="200" />
+          <Property Name="GYTJ_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="GYTJ_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="USAGE_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="USAGE_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="FREQ_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="FREQ_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="DOSE_ONCE" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="DOSE_UNIT" Type="varchar" MaxLength="20" />
+          <Property Name="QTY_TOT" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="QTY_TOT_UNIT" Type="varchar" MaxLength="20" />
+          <Property Name="USE_DAYS" Type="varchar" MaxLength="20" />
+          <Property Name="EXEC_DEPT_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="EXEC_DEPT_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="EXEC_DATE" Type="datetime" />
+          <Property Name="UPD_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CPAT_PATHOLOGY_RECORD">
+          <Key>
+            <PropertyRef Name="PATHOLOGY_ID" />
+          </Key>
+          <Property Name="PATHOLOGY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PATIENT_NO" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="IN_FLAG" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PATIENT_ID" Type="varchar" MaxLength="60" />
+          <Property Name="PATIENT_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="BIRTH_DATE" Type="datetime" />
+          <Property Name="GENDER_CODE" Type="int" />
+          <Property Name="CASE_NO" Type="varchar" MaxLength="60" />
+          <Property Name="MO_CHECK_NO" Type="varchar" MaxLength="60" />
+          <Property Name="COMPLAINTS" Type="varchar" MaxLength="2000" />
+          <Property Name="DIAGNOSE_NAME" Type="varchar" MaxLength="2000" />
+          <Property Name="MEDICAL_HISTORY" Type="varchar" MaxLength="2000" />
+          <Property Name="APPLY_NO" Type="varchar" MaxLength="60" />
+          <Property Name="APPLY_DATE" Type="datetime" />
+          <Property Name="APPLY_DEPT_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="APPLY_DEPT_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="APPLY_DOCTOR_NAME" Type="varchar" MaxLength="20" />
+          <Property Name="SAMPLING_DATE" Type="datetime" />
+          <Property Name="SAMPLE_PART" Type="varchar" MaxLength="60" />
+          <Property Name="SAMPLE_TYPE_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="RECEIVE_DATE" Type="datetime" />
+          <Property Name="ITEM_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="ITEM_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="CHECK_DOCTOR_NAME" Type="varchar" MaxLength="20" />
+          <Property Name="CHECK_DATE" Type="datetime" />
+          <Property Name="REPORT_OBJECTIVE" Type="text" />
+          <Property Name="REPORT_SUBJECTIVE" Type="text" />
+          <Property Name="REPORT_RESULT" Type="text" />
+          <Property Name="BIOPSY" Type="text" />
+          <Property Name="PATHOLOGY" Type="text" />
+          <Property Name="POSITIVE" Type="varchar" MaxLength="200" />
+          <Property Name="SECTION_COUNT" Type="varchar" MaxLength="20" />
+          <Property Name="FROZEN_RESULT" Type="text" />
+          <Property Name="FROZEN_REPORT_DATE" Type="datetime" />
+          <Property Name="REPORT_DATE_TIME" Type="datetime" />
+          <Property Name="REPORT_DOCTOR_NAME" Type="varchar" MaxLength="20" />
+          <Property Name="UPD_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CPAT_TEST_RECORD">
+          <Key>
+            <PropertyRef Name="SAMPLE_NO" />
+          </Key>
+          <Property Name="SAMPLE_NO" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="PATIENT_NO" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="IN_FLAG" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PATIENT_ID" Type="varchar" MaxLength="60" />
+          <Property Name="MO_TEST_NO" Type="varchar" MaxLength="60" />
+          <Property Name="APPLY_NO" Type="varchar" MaxLength="60" />
+          <Property Name="TEST_ITEM_CODE" Type="varchar" MaxLength="200" />
+          <Property Name="TEST_ITEM_NAME" Type="varchar" MaxLength="200" />
+          <Property Name="SAMPLE_TYPE_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="SAMPLE_TYPE_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="SAMPLE_BODY" Type="varchar" MaxLength="200" />
+          <Property Name="APPLY_DEP_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="APPLY_DEP_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="APPLY_DATE" Type="datetime" />
+          <Property Name="SAMPLING_DATE" Type="datetime" />
+          <Property Name="RECEIVE_DATE" Type="datetime" />
+          <Property Name="TEST_DATE" Type="datetime" />
+          <Property Name="REPORT_DATE" Type="datetime" />
+          <Property Name="REPORT_DOCTOR_NAME" Type="varchar" MaxLength="20" />
+          <Property Name="UPD_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CPAT_TEST_RESULT">
+          <Key>
+            <PropertyRef Name="RESULT_ID" />
+          </Key>
+          <Property Name="RESULT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SAMPLE_NO" Type="varchar" MaxLength="60" />
+          <Property Name="PATIENT_NO" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="IN_FLAG" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PATIENT_ID" Type="varchar" MaxLength="60" />
+          <Property Name="RESULT_ITEM_CODE" Type="varchar" MaxLength="200" />
+          <Property Name="RESULT_ITEM_NAME" Type="varchar" MaxLength="200" />
+          <Property Name="RESULT_VALUE" Type="varchar" MaxLength="200" />
+          <Property Name="RESULT_UNIT" Type="varchar" MaxLength="60" />
+          <Property Name="REF_RANGE" Type="varchar" MaxLength="200" />
+          <Property Name="MIN_RANGE" Type="varchar" MaxLength="60" />
+          <Property Name="MAX_RANGE" Type="varchar" MaxLength="60" />
+          <Property Name="RESULT_STATUS" Type="varchar" MaxLength="200" />
+          <Property Name="TEST_METHOD_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="TEST_METHOD_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="UPD_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CPAT_TEST_RESULT_GERM">
+          <Key>
+            <PropertyRef Name="GERM_ID" />
+          </Key>
+          <Property Name="GERM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SAMPLE_NO" Type="varchar" MaxLength="60" />
+          <Property Name="PATIENT_NO" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="IN_FLAG" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PATIENT_ID" Type="varchar" MaxLength="60" />
+          <Property Name="CULTURE_RESULT" Type="varchar" MaxLength="60" />
+          <Property Name="GERM_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="GERM_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="ANTI_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="ANTI_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="NUM_RESULT" Type="varchar" MaxLength="60" />
+          <Property Name="LETTER_RESULT" Type="varchar" MaxLength="20" />
+          <Property Name="UPD_DATE" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="HJ_GZFE_SDRModelStoreContainer">
+          <EntitySet Name="CPAT_CHECK_RECORD" EntityType="Self.CPAT_CHECK_RECORD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CPAT_DIAGNOSIS" EntityType="Self.CPAT_DIAGNOSIS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CPAT_EMR_RECORD" EntityType="Self.CPAT_EMR_RECORD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CPAT_IN_ORDERS" EntityType="Self.CPAT_IN_ORDERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CPAT_IN_PATIENT" EntityType="Self.CPAT_IN_PATIENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CPAT_OUT_EMR" EntityType="Self.CPAT_OUT_EMR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CPAT_OUT_PATIENT" EntityType="Self.CPAT_OUT_PATIENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CPAT_OUT_RECIPE" EntityType="Self.CPAT_OUT_RECIPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CPAT_PATHOLOGY_RECORD" EntityType="Self.CPAT_PATHOLOGY_RECORD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CPAT_TEST_RECORD" EntityType="Self.CPAT_TEST_RECORD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CPAT_TEST_RESULT" EntityType="Self.CPAT_TEST_RESULT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CPAT_TEST_RESULT_GERM" EntityType="Self.CPAT_TEST_RESULT_GERM" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HJ_GZFE_SDRModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CPAT_CHECK_RECORD">
+          <Key>
+            <PropertyRef Name="CHECK_ID" />
+          </Key>
+          <Property Name="CHECK_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PATIENT_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IN_FLAG" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PATIENT_ID" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="MO_CHECK_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="APPLY_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="SYSTEM_CODE" Type="Int32" />
+          <Property Name="CHECK_TYPE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CHECK_ITEM_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CHECK_ITEM_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="APPLY_DATE" Type="DateTime" Precision="3" />
+          <Property Name="APPLY_DEPT_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="APPLY_DEPT_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="RECEIVE_DATE" Type="DateTime" Precision="3" />
+          <Property Name="CHECK_DATE" Type="DateTime" Precision="3" />
+          <Property Name="EXEC_DEPT_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EXEC_DEPT_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="BODY_PART_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CHECK_RESULT_TYPE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="REPORT_OBJECTIVE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="REPORT_SUBJECTIVE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="REPORT_RESULT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="REPORT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="REPORT_DOCTOR_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="UPD_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CPAT_DIAGNOSIS">
+          <Key>
+            <PropertyRef Name="DIAG_ID" />
+          </Key>
+          <Property Name="DIAG_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PATIENT_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IN_FLAG" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PATIENT_ID" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="DIAG_TYPE_CODE" Type="Int32" />
+          <Property Name="DIAG_NO" Type="Int32" />
+          <Property Name="DIAG_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DIAG_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="DIAG_DATE" Type="DateTime" Precision="3" />
+          <Property Name="TREAT_RESULT" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UPD_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CPAT_EMR_RECORD">
+          <Key>
+            <PropertyRef Name="EMR_REC_ID" />
+          </Key>
+          <Property Name="EMR_REC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PATIENT_ID" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="PATIENT_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="EMR_TYPE_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EMR_TYPE_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="LGCY_TYPE_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LGCY_TYPE_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="LGCY_SUB_TYPE_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LGCY_SUB_TYPE_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="REC_CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="REC_CONTENT_FM" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="REC_TYPE" Type="Int32" />
+          <Property Name="CREATOR_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CREATOR_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="CREATE_DATE" Type="DateTime" Precision="3" />
+          <Property Name="REC_PSN_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="REC_PSN_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="REC_DATE" Type="DateTime" Precision="3" />
+          <Property Name="REC_DEPT_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="REC_DEPT_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="PARENT_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PARENT_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECTOR_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECTOR_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="UPD_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CPAT_IN_ORDERS">
+          <Key>
+            <PropertyRef Name="MO_ORDER_NO" />
+          </Key>
+          <Property Name="MO_ORDER_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PATIENT_ID" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="PATIENT_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="APPLY_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="MO_DATE" Type="DateTime" Precision="3" />
+          <Property Name="DATE_BEGIN" Type="DateTime" Precision="3" />
+          <Property Name="DATE_END" Type="DateTime" Precision="3" />
+          <Property Name="ORDER_TYPE_CODE" Type="Int32" />
+          <Property Name="ORDER_ITEM_CODE" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ORDER_ITEM_NAME" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="LONG_FLAG" Type="Int32" />
+          <Property Name="OUT_DRUG_FLAG" Type="Int32" />
+          <Property Name="DEPT_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DEPT_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="DOCTOR_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="STOP_DOCTOR_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ITEM_GOODS_NAME" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="GYTJ_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GYTJ_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="USAGE_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="USAGE_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="FREQ_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FREQ_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="DOSE_ONCE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DOSE_UNIT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="QTY_TOT" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="QTY_TOT_UNIT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CHN_MEDI_QTY" Type="Int32" />
+          <Property Name="USE_INTENDED_CODE" Type="Int32" />
+          <Property Name="EXEC_DEPT_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EXEC_DEPT_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="EXEC_PERSON" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="EXEC_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPD_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CPAT_IN_PATIENT">
+          <Key>
+            <PropertyRef Name="PATIENT_NO" />
+          </Key>
+          <Property Name="PATIENT_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PATIENT_ID" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IN_TIMES" Type="Int32" />
+          <Property Name="CASE_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="CARD_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="PATIENT_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ID_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="BIRTH_DATE" Type="DateTime" Precision="3" />
+          <Property Name="GENDER_CODE" Type="Int32" />
+          <Property Name="COUNTRY_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="NATION_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="MARI_STAT_CODE" Type="Int32" />
+          <Property Name="CHARGE_TYPE_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CHARGE_TYPE_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="IN_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OUT_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IN_DEPT_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IN_DEPT_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="AREA_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AREA_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="OUT_DEPT_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="OUT_DEPT_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="IN_DEPT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="OUT_DEPT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="DOCTOR_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DOCTOR_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="IN_SOURCE_CODE" Type="Int32" />
+          <Property Name="IN_STATUS_CODE" Type="Int32" />
+          <Property Name="OUT_WAY_CODE" Type="Int32" />
+          <Property Name="OUT_STATUS_CODE" Type="Int32" />
+          <Property Name="IN_DIAG_CODE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IN_DIAG_NAME" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="OUT_DIAG_CODE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OUT_DIAG_NAME" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="UPD_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CPAT_OUT_EMR">
+          <Key>
+            <PropertyRef Name="EMR_REC_ID" />
+          </Key>
+          <Property Name="EMR_REC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PATIENT_ID" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="PATIENT_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="PATIENT_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="VISIT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="COMPLAINTS" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="CASE_ALLERGY" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="CASE_NOW" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="CASE_OLD" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="FIRST_VISIT_FLAG" Type="Int32" />
+          <Property Name="PHYSICAL" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="CHECK_ITEM_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CHECK_RESULT" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="DIAGNOSIS_CODE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DIAGNOSIS_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UPD_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CPAT_OUT_PATIENT">
+          <Key>
+            <PropertyRef Name="PATIENT_NO" />
+          </Key>
+          <Property Name="PATIENT_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PATIENT_ID" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CASE_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="CARD_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="PATIENT_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ID_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="BIRTH_DATE" Type="DateTime" Precision="3" />
+          <Property Name="GENDER_CODE" Type="Int32" />
+          <Property Name="COUNTRY_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="NATION_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="MARI_STAT_CODE" Type="Int32" />
+          <Property Name="CHARGE_TYPE_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CHARGE_TYPE_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="REG_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="REG_DEPT_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="REG_DEPT_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="REG_LEVEL_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="REG_LEVEL_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="SEE_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SEE_DATE" Type="DateTime" Precision="3" />
+          <Property Name="DOCTOR_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DOCTOR_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="DIAG_CODE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DIAG_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DIAG_DATE" Type="DateTime" Precision="3" />
+          <Property Name="FIRST_VISIT_FLAG" Type="Int32" />
+          <Property Name="UPD_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CPAT_OUT_RECIPE">
+          <Key>
+            <PropertyRef Name="RECIPE_ID" />
+          </Key>
+          <Property Name="RECIPE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PATIENT_ID" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="PATIENT_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="RECIPE_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="APPLY_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="RECIPE_DATE" Type="DateTime" Precision="3" />
+          <Property Name="RECIPE_TYPE_CODE" Type="Int32" />
+          <Property Name="ITEM_CODE" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ITEM_NAME" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="DEPT_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DEPT_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="DOCTOR_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ITEM_GOODS_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="GYTJ_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GYTJ_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="USAGE_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="USAGE_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="FREQ_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FREQ_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="DOSE_ONCE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DOSE_UNIT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="QTY_TOT" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="QTY_TOT_UNIT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="USE_DAYS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EXEC_DEPT_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EXEC_DEPT_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="EXEC_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPD_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CPAT_PATHOLOGY_RECORD">
+          <Key>
+            <PropertyRef Name="PATHOLOGY_ID" />
+          </Key>
+          <Property Name="PATHOLOGY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PATIENT_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IN_FLAG" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PATIENT_ID" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="PATIENT_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="BIRTH_DATE" Type="DateTime" Precision="3" />
+          <Property Name="GENDER_CODE" Type="Int32" />
+          <Property Name="CASE_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="MO_CHECK_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="COMPLAINTS" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="DIAGNOSE_NAME" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="MEDICAL_HISTORY" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="APPLY_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="APPLY_DATE" Type="DateTime" Precision="3" />
+          <Property Name="APPLY_DEPT_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="APPLY_DEPT_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="APPLY_DOCTOR_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SAMPLING_DATE" Type="DateTime" Precision="3" />
+          <Property Name="SAMPLE_PART" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="SAMPLE_TYPE_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="RECEIVE_DATE" Type="DateTime" Precision="3" />
+          <Property Name="ITEM_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ITEM_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="CHECK_DOCTOR_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CHECK_DATE" Type="DateTime" Precision="3" />
+          <Property Name="REPORT_OBJECTIVE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="REPORT_SUBJECTIVE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="REPORT_RESULT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BIOPSY" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PATHOLOGY" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="POSITIVE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SECTION_COUNT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FROZEN_RESULT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FROZEN_REPORT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="REPORT_DATE_TIME" Type="DateTime" Precision="3" />
+          <Property Name="REPORT_DOCTOR_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UPD_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CPAT_TEST_RECORD">
+          <Key>
+            <PropertyRef Name="SAMPLE_NO" />
+          </Key>
+          <Property Name="SAMPLE_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PATIENT_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IN_FLAG" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PATIENT_ID" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="MO_TEST_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="APPLY_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="TEST_ITEM_CODE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="TEST_ITEM_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SAMPLE_TYPE_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SAMPLE_TYPE_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="SAMPLE_BODY" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="APPLY_DEP_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="APPLY_DEP_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="APPLY_DATE" Type="DateTime" Precision="3" />
+          <Property Name="SAMPLING_DATE" Type="DateTime" Precision="3" />
+          <Property Name="RECEIVE_DATE" Type="DateTime" Precision="3" />
+          <Property Name="TEST_DATE" Type="DateTime" Precision="3" />
+          <Property Name="REPORT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="REPORT_DOCTOR_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UPD_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CPAT_TEST_RESULT">
+          <Key>
+            <PropertyRef Name="RESULT_ID" />
+          </Key>
+          <Property Name="RESULT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SAMPLE_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="PATIENT_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IN_FLAG" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PATIENT_ID" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="RESULT_ITEM_CODE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="RESULT_ITEM_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="RESULT_VALUE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="RESULT_UNIT" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="REF_RANGE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MIN_RANGE" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="MAX_RANGE" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="RESULT_STATUS" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="TEST_METHOD_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TEST_METHOD_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="UPD_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CPAT_TEST_RESULT_GERM">
+          <Key>
+            <PropertyRef Name="GERM_ID" />
+          </Key>
+          <Property Name="GERM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SAMPLE_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="PATIENT_NO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IN_FLAG" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PATIENT_ID" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="CULTURE_RESULT" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="GERM_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GERM_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ANTI_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ANTI_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="NUM_RESULT" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="LETTER_RESULT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UPD_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="XKPIEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CPAT_CHECK_RECORD" EntityType="Self.CPAT_CHECK_RECORD" />
+          <EntitySet Name="CPAT_DIAGNOSIS" EntityType="Self.CPAT_DIAGNOSIS" />
+          <EntitySet Name="CPAT_EMR_RECORD" EntityType="Self.CPAT_EMR_RECORD" />
+          <EntitySet Name="CPAT_IN_ORDERS" EntityType="Self.CPAT_IN_ORDERS" />
+          <EntitySet Name="CPAT_IN_PATIENT" EntityType="Self.CPAT_IN_PATIENT" />
+          <EntitySet Name="CPAT_OUT_EMR" EntityType="Self.CPAT_OUT_EMR" />
+          <EntitySet Name="CPAT_OUT_PATIENT" EntityType="Self.CPAT_OUT_PATIENT" />
+          <EntitySet Name="CPAT_OUT_RECIPE" EntityType="Self.CPAT_OUT_RECIPE" />
+          <EntitySet Name="CPAT_PATHOLOGY_RECORD" EntityType="Self.CPAT_PATHOLOGY_RECORD" />
+          <EntitySet Name="CPAT_TEST_RECORD" EntityType="Self.CPAT_TEST_RECORD" />
+          <EntitySet Name="CPAT_TEST_RESULT" EntityType="Self.CPAT_TEST_RESULT" />
+          <EntitySet Name="CPAT_TEST_RESULT_GERM" EntityType="Self.CPAT_TEST_RESULT_GERM" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HJ_GZFE_SDRModelStoreContainer" CdmEntityContainer="XKPIEntities">
+          <EntitySetMapping Name="CPAT_CHECK_RECORD">
+            <EntityTypeMapping TypeName="HJ_GZFE_SDRModel.CPAT_CHECK_RECORD">
+              <MappingFragment StoreEntitySet="CPAT_CHECK_RECORD">
+                <ScalarProperty Name="CHECK_ID" ColumnName="CHECK_ID" />
+                <ScalarProperty Name="PATIENT_NO" ColumnName="PATIENT_NO" />
+                <ScalarProperty Name="IN_FLAG" ColumnName="IN_FLAG" />
+                <ScalarProperty Name="PATIENT_ID" ColumnName="PATIENT_ID" />
+                <ScalarProperty Name="MO_CHECK_NO" ColumnName="MO_CHECK_NO" />
+                <ScalarProperty Name="APPLY_NO" ColumnName="APPLY_NO" />
+                <ScalarProperty Name="SYSTEM_CODE" ColumnName="SYSTEM_CODE" />
+                <ScalarProperty Name="CHECK_TYPE" ColumnName="CHECK_TYPE" />
+                <ScalarProperty Name="CHECK_ITEM_CODE" ColumnName="CHECK_ITEM_CODE" />
+                <ScalarProperty Name="CHECK_ITEM_NAME" ColumnName="CHECK_ITEM_NAME" />
+                <ScalarProperty Name="APPLY_DATE" ColumnName="APPLY_DATE" />
+                <ScalarProperty Name="APPLY_DEPT_CODE" ColumnName="APPLY_DEPT_CODE" />
+                <ScalarProperty Name="APPLY_DEPT_NAME" ColumnName="APPLY_DEPT_NAME" />
+                <ScalarProperty Name="RECEIVE_DATE" ColumnName="RECEIVE_DATE" />
+                <ScalarProperty Name="CHECK_DATE" ColumnName="CHECK_DATE" />
+                <ScalarProperty Name="EXEC_DEPT_CODE" ColumnName="EXEC_DEPT_CODE" />
+                <ScalarProperty Name="EXEC_DEPT_NAME" ColumnName="EXEC_DEPT_NAME" />
+                <ScalarProperty Name="BODY_PART_NAME" ColumnName="BODY_PART_NAME" />
+                <ScalarProperty Name="CHECK_RESULT_TYPE" ColumnName="CHECK_RESULT_TYPE" />
+                <ScalarProperty Name="REPORT_OBJECTIVE" ColumnName="REPORT_OBJECTIVE" />
+                <ScalarProperty Name="REPORT_SUBJECTIVE" ColumnName="REPORT_SUBJECTIVE" />
+                <ScalarProperty Name="REPORT_RESULT" ColumnName="REPORT_RESULT" />
+                <ScalarProperty Name="REPORT_DATE" ColumnName="REPORT_DATE" />
+                <ScalarProperty Name="REPORT_DOCTOR_NAME" ColumnName="REPORT_DOCTOR_NAME" />
+                <ScalarProperty Name="UPD_DATE" ColumnName="UPD_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CPAT_DIAGNOSIS">
+            <EntityTypeMapping TypeName="HJ_GZFE_SDRModel.CPAT_DIAGNOSIS">
+              <MappingFragment StoreEntitySet="CPAT_DIAGNOSIS">
+                <ScalarProperty Name="DIAG_ID" ColumnName="DIAG_ID" />
+                <ScalarProperty Name="PATIENT_NO" ColumnName="PATIENT_NO" />
+                <ScalarProperty Name="IN_FLAG" ColumnName="IN_FLAG" />
+                <ScalarProperty Name="PATIENT_ID" ColumnName="PATIENT_ID" />
+                <ScalarProperty Name="DIAG_TYPE_CODE" ColumnName="DIAG_TYPE_CODE" />
+                <ScalarProperty Name="DIAG_NO" ColumnName="DIAG_NO" />
+                <ScalarProperty Name="DIAG_CODE" ColumnName="DIAG_CODE" />
+                <ScalarProperty Name="DIAG_NAME" ColumnName="DIAG_NAME" />
+                <ScalarProperty Name="DIAG_DATE" ColumnName="DIAG_DATE" />
+                <ScalarProperty Name="TREAT_RESULT" ColumnName="TREAT_RESULT" />
+                <ScalarProperty Name="UPD_DATE" ColumnName="UPD_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CPAT_EMR_RECORD">
+            <EntityTypeMapping TypeName="HJ_GZFE_SDRModel.CPAT_EMR_RECORD">
+              <MappingFragment StoreEntitySet="CPAT_EMR_RECORD">
+                <ScalarProperty Name="EMR_REC_ID" ColumnName="EMR_REC_ID" />
+                <ScalarProperty Name="PATIENT_ID" ColumnName="PATIENT_ID" />
+                <ScalarProperty Name="PATIENT_NO" ColumnName="PATIENT_NO" />
+                <ScalarProperty Name="EMR_TYPE_CODE" ColumnName="EMR_TYPE_CODE" />
+                <ScalarProperty Name="EMR_TYPE_NAME" ColumnName="EMR_TYPE_NAME" />
+                <ScalarProperty Name="LGCY_TYPE_CODE" ColumnName="LGCY_TYPE_CODE" />
+                <ScalarProperty Name="LGCY_TYPE_NAME" ColumnName="LGCY_TYPE_NAME" />
+                <ScalarProperty Name="LGCY_SUB_TYPE_CODE" ColumnName="LGCY_SUB_TYPE_CODE" />
+                <ScalarProperty Name="LGCY_SUB_TYPE_NAME" ColumnName="LGCY_SUB_TYPE_NAME" />
+                <ScalarProperty Name="REC_CONTENT" ColumnName="REC_CONTENT" />
+                <ScalarProperty Name="REC_CONTENT_FM" ColumnName="REC_CONTENT_FM" />
+                <ScalarProperty Name="REC_TYPE" ColumnName="REC_TYPE" />
+                <ScalarProperty Name="CREATOR_CODE" ColumnName="CREATOR_CODE" />
+                <ScalarProperty Name="CREATOR_NAME" ColumnName="CREATOR_NAME" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="REC_PSN_CODE" ColumnName="REC_PSN_CODE" />
+                <ScalarProperty Name="REC_PSN_NAME" ColumnName="REC_PSN_NAME" />
+                <ScalarProperty Name="REC_DATE" ColumnName="REC_DATE" />
+                <ScalarProperty Name="REC_DEPT_CODE" ColumnName="REC_DEPT_CODE" />
+                <ScalarProperty Name="REC_DEPT_NAME" ColumnName="REC_DEPT_NAME" />
+                <ScalarProperty Name="PARENT_CODE" ColumnName="PARENT_CODE" />
+                <ScalarProperty Name="PARENT_NAME" ColumnName="PARENT_NAME" />
+                <ScalarProperty Name="DIRECTOR_CODE" ColumnName="DIRECTOR_CODE" />
+                <ScalarProperty Name="DIRECTOR_NAME" ColumnName="DIRECTOR_NAME" />
+                <ScalarProperty Name="UPD_DATE" ColumnName="UPD_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CPAT_IN_ORDERS">
+            <EntityTypeMapping TypeName="HJ_GZFE_SDRModel.CPAT_IN_ORDERS">
+              <MappingFragment StoreEntitySet="CPAT_IN_ORDERS">
+                <ScalarProperty Name="MO_ORDER_NO" ColumnName="MO_ORDER_NO" />
+                <ScalarProperty Name="PATIENT_ID" ColumnName="PATIENT_ID" />
+                <ScalarProperty Name="PATIENT_NO" ColumnName="PATIENT_NO" />
+                <ScalarProperty Name="APPLY_NO" ColumnName="APPLY_NO" />
+                <ScalarProperty Name="MO_DATE" ColumnName="MO_DATE" />
+                <ScalarProperty Name="DATE_BEGIN" ColumnName="DATE_BEGIN" />
+                <ScalarProperty Name="DATE_END" ColumnName="DATE_END" />
+                <ScalarProperty Name="ORDER_TYPE_CODE" ColumnName="ORDER_TYPE_CODE" />
+                <ScalarProperty Name="ORDER_ITEM_CODE" ColumnName="ORDER_ITEM_CODE" />
+                <ScalarProperty Name="ORDER_ITEM_NAME" ColumnName="ORDER_ITEM_NAME" />
+                <ScalarProperty Name="LONG_FLAG" ColumnName="LONG_FLAG" />
+                <ScalarProperty Name="OUT_DRUG_FLAG" ColumnName="OUT_DRUG_FLAG" />
+                <ScalarProperty Name="DEPT_CODE" ColumnName="DEPT_CODE" />
+                <ScalarProperty Name="DEPT_NAME" ColumnName="DEPT_NAME" />
+                <ScalarProperty Name="DOCTOR_NAME" ColumnName="DOCTOR_NAME" />
+                <ScalarProperty Name="STOP_DOCTOR_NAME" ColumnName="STOP_DOCTOR_NAME" />
+                <ScalarProperty Name="ITEM_GOODS_NAME" ColumnName="ITEM_GOODS_NAME" />
+                <ScalarProperty Name="GYTJ_CODE" ColumnName="GYTJ_CODE" />
+                <ScalarProperty Name="GYTJ_NAME" ColumnName="GYTJ_NAME" />
+                <ScalarProperty Name="USAGE_CODE" ColumnName="USAGE_CODE" />
+                <ScalarProperty Name="USAGE_NAME" ColumnName="USAGE_NAME" />
+                <ScalarProperty Name="FREQ_CODE" ColumnName="FREQ_CODE" />
+                <ScalarProperty Name="FREQ_NAME" ColumnName="FREQ_NAME" />
+                <ScalarProperty Name="DOSE_ONCE" ColumnName="DOSE_ONCE" />
+                <ScalarProperty Name="DOSE_UNIT" ColumnName="DOSE_UNIT" />
+                <ScalarProperty Name="QTY_TOT" ColumnName="QTY_TOT" />
+                <ScalarProperty Name="QTY_TOT_UNIT" ColumnName="QTY_TOT_UNIT" />
+                <ScalarProperty Name="CHN_MEDI_QTY" ColumnName="CHN_MEDI_QTY" />
+                <ScalarProperty Name="USE_INTENDED_CODE" ColumnName="USE_INTENDED_CODE" />
+                <ScalarProperty Name="EXEC_DEPT_CODE" ColumnName="EXEC_DEPT_CODE" />
+                <ScalarProperty Name="EXEC_DEPT_NAME" ColumnName="EXEC_DEPT_NAME" />
+                <ScalarProperty Name="EXEC_PERSON" ColumnName="EXEC_PERSON" />
+                <ScalarProperty Name="EXEC_DATE" ColumnName="EXEC_DATE" />
+                <ScalarProperty Name="UPD_DATE" ColumnName="UPD_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CPAT_IN_PATIENT">
+            <EntityTypeMapping TypeName="HJ_GZFE_SDRModel.CPAT_IN_PATIENT">
+              <MappingFragment StoreEntitySet="CPAT_IN_PATIENT">
+                <ScalarProperty Name="PATIENT_NO" ColumnName="PATIENT_NO" />
+                <ScalarProperty Name="PATIENT_ID" ColumnName="PATIENT_ID" />
+                <ScalarProperty Name="IN_TIMES" ColumnName="IN_TIMES" />
+                <ScalarProperty Name="CASE_NO" ColumnName="CASE_NO" />
+                <ScalarProperty Name="CARD_NO" ColumnName="CARD_NO" />
+                <ScalarProperty Name="PATIENT_NAME" ColumnName="PATIENT_NAME" />
+                <ScalarProperty Name="ID_NO" ColumnName="ID_NO" />
+                <ScalarProperty Name="BIRTH_DATE" ColumnName="BIRTH_DATE" />
+                <ScalarProperty Name="GENDER_CODE" ColumnName="GENDER_CODE" />
+                <ScalarProperty Name="COUNTRY_NAME" ColumnName="COUNTRY_NAME" />
+                <ScalarProperty Name="NATION_NAME" ColumnName="NATION_NAME" />
+                <ScalarProperty Name="MARI_STAT_CODE" ColumnName="MARI_STAT_CODE" />
+                <ScalarProperty Name="CHARGE_TYPE_CODE" ColumnName="CHARGE_TYPE_CODE" />
+                <ScalarProperty Name="CHARGE_TYPE_NAME" ColumnName="CHARGE_TYPE_NAME" />
+                <ScalarProperty Name="IN_DATE" ColumnName="IN_DATE" />
+                <ScalarProperty Name="OUT_DATE" ColumnName="OUT_DATE" />
+                <ScalarProperty Name="IN_DEPT_CODE" ColumnName="IN_DEPT_CODE" />
+                <ScalarProperty Name="IN_DEPT_NAME" ColumnName="IN_DEPT_NAME" />
+                <ScalarProperty Name="AREA_CODE" ColumnName="AREA_CODE" />
+                <ScalarProperty Name="AREA_NAME" ColumnName="AREA_NAME" />
+                <ScalarProperty Name="OUT_DEPT_CODE" ColumnName="OUT_DEPT_CODE" />
+                <ScalarProperty Name="OUT_DEPT_NAME" ColumnName="OUT_DEPT_NAME" />
+                <ScalarProperty Name="IN_DEPT_DATE" ColumnName="IN_DEPT_DATE" />
+                <ScalarProperty Name="OUT_DEPT_DATE" ColumnName="OUT_DEPT_DATE" />
+                <ScalarProperty Name="DOCTOR_CODE" ColumnName="DOCTOR_CODE" />
+                <ScalarProperty Name="DOCTOR_NAME" ColumnName="DOCTOR_NAME" />
+                <ScalarProperty Name="IN_SOURCE_CODE" ColumnName="IN_SOURCE_CODE" />
+                <ScalarProperty Name="IN_STATUS_CODE" ColumnName="IN_STATUS_CODE" />
+                <ScalarProperty Name="OUT_WAY_CODE" ColumnName="OUT_WAY_CODE" />
+                <ScalarProperty Name="OUT_STATUS_CODE" ColumnName="OUT_STATUS_CODE" />
+                <ScalarProperty Name="IN_DIAG_CODE" ColumnName="IN_DIAG_CODE" />
+                <ScalarProperty Name="IN_DIAG_NAME" ColumnName="IN_DIAG_NAME" />
+                <ScalarProperty Name="OUT_DIAG_CODE" ColumnName="OUT_DIAG_CODE" />
+                <ScalarProperty Name="OUT_DIAG_NAME" ColumnName="OUT_DIAG_NAME" />
+                <ScalarProperty Name="UPD_DATE" ColumnName="UPD_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CPAT_OUT_EMR">
+            <EntityTypeMapping TypeName="HJ_GZFE_SDRModel.CPAT_OUT_EMR">
+              <MappingFragment StoreEntitySet="CPAT_OUT_EMR">
+                <ScalarProperty Name="EMR_REC_ID" ColumnName="EMR_REC_ID" />
+                <ScalarProperty Name="PATIENT_ID" ColumnName="PATIENT_ID" />
+                <ScalarProperty Name="PATIENT_NO" ColumnName="PATIENT_NO" />
+                <ScalarProperty Name="PATIENT_NAME" ColumnName="PATIENT_NAME" />
+                <ScalarProperty Name="VISIT_DATE" ColumnName="VISIT_DATE" />
+                <ScalarProperty Name="COMPLAINTS" ColumnName="COMPLAINTS" />
+                <ScalarProperty Name="CASE_ALLERGY" ColumnName="CASE_ALLERGY" />
+                <ScalarProperty Name="CASE_NOW" ColumnName="CASE_NOW" />
+                <ScalarProperty Name="CASE_OLD" ColumnName="CASE_OLD" />
+                <ScalarProperty Name="FIRST_VISIT_FLAG" ColumnName="FIRST_VISIT_FLAG" />
+                <ScalarProperty Name="PHYSICAL" ColumnName="PHYSICAL" />
+                <ScalarProperty Name="CHECK_ITEM_NAME" ColumnName="CHECK_ITEM_NAME" />
+                <ScalarProperty Name="CHECK_RESULT" ColumnName="CHECK_RESULT" />
+                <ScalarProperty Name="DIAGNOSIS_CODE" ColumnName="DIAGNOSIS_CODE" />
+                <ScalarProperty Name="DIAGNOSIS_NAME" ColumnName="DIAGNOSIS_NAME" />
+                <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+                <ScalarProperty Name="UPD_DATE" ColumnName="UPD_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CPAT_OUT_PATIENT">
+            <EntityTypeMapping TypeName="HJ_GZFE_SDRModel.CPAT_OUT_PATIENT">
+              <MappingFragment StoreEntitySet="CPAT_OUT_PATIENT">
+                <ScalarProperty Name="PATIENT_NO" ColumnName="PATIENT_NO" />
+                <ScalarProperty Name="PATIENT_ID" ColumnName="PATIENT_ID" />
+                <ScalarProperty Name="CASE_NO" ColumnName="CASE_NO" />
+                <ScalarProperty Name="CARD_NO" ColumnName="CARD_NO" />
+                <ScalarProperty Name="PATIENT_NAME" ColumnName="PATIENT_NAME" />
+                <ScalarProperty Name="ID_NO" ColumnName="ID_NO" />
+                <ScalarProperty Name="BIRTH_DATE" ColumnName="BIRTH_DATE" />
+                <ScalarProperty Name="GENDER_CODE" ColumnName="GENDER_CODE" />
+                <ScalarProperty Name="COUNTRY_NAME" ColumnName="COUNTRY_NAME" />
+                <ScalarProperty Name="NATION_NAME" ColumnName="NATION_NAME" />
+                <ScalarProperty Name="MARI_STAT_CODE" ColumnName="MARI_STAT_CODE" />
+                <ScalarProperty Name="CHARGE_TYPE_CODE" ColumnName="CHARGE_TYPE_CODE" />
+                <ScalarProperty Name="CHARGE_TYPE_NAME" ColumnName="CHARGE_TYPE_NAME" />
+                <ScalarProperty Name="REG_DATE" ColumnName="REG_DATE" />
+                <ScalarProperty Name="REG_DEPT_CODE" ColumnName="REG_DEPT_CODE" />
+                <ScalarProperty Name="REG_DEPT_NAME" ColumnName="REG_DEPT_NAME" />
+                <ScalarProperty Name="REG_LEVEL_CODE" ColumnName="REG_LEVEL_CODE" />
+                <ScalarProperty Name="REG_LEVEL_NAME" ColumnName="REG_LEVEL_NAME" />
+                <ScalarProperty Name="SEE_NO" ColumnName="SEE_NO" />
+                <ScalarProperty Name="SEE_DATE" ColumnName="SEE_DATE" />
+                <ScalarProperty Name="DOCTOR_CODE" ColumnName="DOCTOR_CODE" />
+                <ScalarProperty Name="DOCTOR_NAME" ColumnName="DOCTOR_NAME" />
+                <ScalarProperty Name="DIAG_CODE" ColumnName="DIAG_CODE" />
+                <ScalarProperty Name="DIAG_NAME" ColumnName="DIAG_NAME" />
+                <ScalarProperty Name="DIAG_DATE" ColumnName="DIAG_DATE" />
+                <ScalarProperty Name="FIRST_VISIT_FLAG" ColumnName="FIRST_VISIT_FLAG" />
+                <ScalarProperty Name="UPD_DATE" ColumnName="UPD_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CPAT_OUT_RECIPE">
+            <EntityTypeMapping TypeName="HJ_GZFE_SDRModel.CPAT_OUT_RECIPE">
+              <MappingFragment StoreEntitySet="CPAT_OUT_RECIPE">
+                <ScalarProperty Name="RECIPE_ID" ColumnName="RECIPE_ID" />
+                <ScalarProperty Name="PATIENT_ID" ColumnName="PATIENT_ID" />
+                <ScalarProperty Name="PATIENT_NO" ColumnName="PATIENT_NO" />
+                <ScalarProperty Name="RECIPE_NO" ColumnName="RECIPE_NO" />
+                <ScalarProperty Name="APPLY_NO" ColumnName="APPLY_NO" />
+                <ScalarProperty Name="RECIPE_DATE" ColumnName="RECIPE_DATE" />
+                <ScalarProperty Name="RECIPE_TYPE_CODE" ColumnName="RECIPE_TYPE_CODE" />
+                <ScalarProperty Name="ITEM_CODE" ColumnName="ITEM_CODE" />
+                <ScalarProperty Name="ITEM_NAME" ColumnName="ITEM_NAME" />
+                <ScalarProperty Name="DEPT_CODE" ColumnName="DEPT_CODE" />
+                <ScalarProperty Name="DEPT_NAME" ColumnName="DEPT_NAME" />
+                <ScalarProperty Name="DOCTOR_NAME" ColumnName="DOCTOR_NAME" />
+                <ScalarProperty Name="ITEM_GOODS_NAME" ColumnName="ITEM_GOODS_NAME" />
+                <ScalarProperty Name="GYTJ_CODE" ColumnName="GYTJ_CODE" />
+                <ScalarProperty Name="GYTJ_NAME" ColumnName="GYTJ_NAME" />
+                <ScalarProperty Name="USAGE_CODE" ColumnName="USAGE_CODE" />
+                <ScalarProperty Name="USAGE_NAME" ColumnName="USAGE_NAME" />
+                <ScalarProperty Name="FREQ_CODE" ColumnName="FREQ_CODE" />
+                <ScalarProperty Name="FREQ_NAME" ColumnName="FREQ_NAME" />
+                <ScalarProperty Name="DOSE_ONCE" ColumnName="DOSE_ONCE" />
+                <ScalarProperty Name="DOSE_UNIT" ColumnName="DOSE_UNIT" />
+                <ScalarProperty Name="QTY_TOT" ColumnName="QTY_TOT" />
+                <ScalarProperty Name="QTY_TOT_UNIT" ColumnName="QTY_TOT_UNIT" />
+                <ScalarProperty Name="USE_DAYS" ColumnName="USE_DAYS" />
+                <ScalarProperty Name="EXEC_DEPT_CODE" ColumnName="EXEC_DEPT_CODE" />
+                <ScalarProperty Name="EXEC_DEPT_NAME" ColumnName="EXEC_DEPT_NAME" />
+                <ScalarProperty Name="EXEC_DATE" ColumnName="EXEC_DATE" />
+                <ScalarProperty Name="UPD_DATE" ColumnName="UPD_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CPAT_PATHOLOGY_RECORD">
+            <EntityTypeMapping TypeName="HJ_GZFE_SDRModel.CPAT_PATHOLOGY_RECORD">
+              <MappingFragment StoreEntitySet="CPAT_PATHOLOGY_RECORD">
+                <ScalarProperty Name="PATHOLOGY_ID" ColumnName="PATHOLOGY_ID" />
+                <ScalarProperty Name="PATIENT_NO" ColumnName="PATIENT_NO" />
+                <ScalarProperty Name="IN_FLAG" ColumnName="IN_FLAG" />
+                <ScalarProperty Name="PATIENT_ID" ColumnName="PATIENT_ID" />
+                <ScalarProperty Name="PATIENT_NAME" ColumnName="PATIENT_NAME" />
+                <ScalarProperty Name="BIRTH_DATE" ColumnName="BIRTH_DATE" />
+                <ScalarProperty Name="GENDER_CODE" ColumnName="GENDER_CODE" />
+                <ScalarProperty Name="CASE_NO" ColumnName="CASE_NO" />
+                <ScalarProperty Name="MO_CHECK_NO" ColumnName="MO_CHECK_NO" />
+                <ScalarProperty Name="COMPLAINTS" ColumnName="COMPLAINTS" />
+                <ScalarProperty Name="DIAGNOSE_NAME" ColumnName="DIAGNOSE_NAME" />
+                <ScalarProperty Name="MEDICAL_HISTORY" ColumnName="MEDICAL_HISTORY" />
+                <ScalarProperty Name="APPLY_NO" ColumnName="APPLY_NO" />
+                <ScalarProperty Name="APPLY_DATE" ColumnName="APPLY_DATE" />
+                <ScalarProperty Name="APPLY_DEPT_CODE" ColumnName="APPLY_DEPT_CODE" />
+                <ScalarProperty Name="APPLY_DEPT_NAME" ColumnName="APPLY_DEPT_NAME" />
+                <ScalarProperty Name="APPLY_DOCTOR_NAME" ColumnName="APPLY_DOCTOR_NAME" />
+                <ScalarProperty Name="SAMPLING_DATE" ColumnName="SAMPLING_DATE" />
+                <ScalarProperty Name="SAMPLE_PART" ColumnName="SAMPLE_PART" />
+                <ScalarProperty Name="SAMPLE_TYPE_NAME" ColumnName="SAMPLE_TYPE_NAME" />
+                <ScalarProperty Name="RECEIVE_DATE" ColumnName="RECEIVE_DATE" />
+                <ScalarProperty Name="ITEM_CODE" ColumnName="ITEM_CODE" />
+                <ScalarProperty Name="ITEM_NAME" ColumnName="ITEM_NAME" />
+                <ScalarProperty Name="CHECK_DOCTOR_NAME" ColumnName="CHECK_DOCTOR_NAME" />
+                <ScalarProperty Name="CHECK_DATE" ColumnName="CHECK_DATE" />
+                <ScalarProperty Name="REPORT_OBJECTIVE" ColumnName="REPORT_OBJECTIVE" />
+                <ScalarProperty Name="REPORT_SUBJECTIVE" ColumnName="REPORT_SUBJECTIVE" />
+                <ScalarProperty Name="REPORT_RESULT" ColumnName="REPORT_RESULT" />
+                <ScalarProperty Name="BIOPSY" ColumnName="BIOPSY" />
+                <ScalarProperty Name="PATHOLOGY" ColumnName="PATHOLOGY" />
+                <ScalarProperty Name="POSITIVE" ColumnName="POSITIVE" />
+                <ScalarProperty Name="SECTION_COUNT" ColumnName="SECTION_COUNT" />
+                <ScalarProperty Name="FROZEN_RESULT" ColumnName="FROZEN_RESULT" />
+                <ScalarProperty Name="FROZEN_REPORT_DATE" ColumnName="FROZEN_REPORT_DATE" />
+                <ScalarProperty Name="REPORT_DATE_TIME" ColumnName="REPORT_DATE_TIME" />
+                <ScalarProperty Name="REPORT_DOCTOR_NAME" ColumnName="REPORT_DOCTOR_NAME" />
+                <ScalarProperty Name="UPD_DATE" ColumnName="UPD_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CPAT_TEST_RECORD">
+            <EntityTypeMapping TypeName="HJ_GZFE_SDRModel.CPAT_TEST_RECORD">
+              <MappingFragment StoreEntitySet="CPAT_TEST_RECORD">
+                <ScalarProperty Name="SAMPLE_NO" ColumnName="SAMPLE_NO" />
+                <ScalarProperty Name="PATIENT_NO" ColumnName="PATIENT_NO" />
+                <ScalarProperty Name="IN_FLAG" ColumnName="IN_FLAG" />
+                <ScalarProperty Name="PATIENT_ID" ColumnName="PATIENT_ID" />
+                <ScalarProperty Name="MO_TEST_NO" ColumnName="MO_TEST_NO" />
+                <ScalarProperty Name="APPLY_NO" ColumnName="APPLY_NO" />
+                <ScalarProperty Name="TEST_ITEM_CODE" ColumnName="TEST_ITEM_CODE" />
+                <ScalarProperty Name="TEST_ITEM_NAME" ColumnName="TEST_ITEM_NAME" />
+                <ScalarProperty Name="SAMPLE_TYPE_CODE" ColumnName="SAMPLE_TYPE_CODE" />
+                <ScalarProperty Name="SAMPLE_TYPE_NAME" ColumnName="SAMPLE_TYPE_NAME" />
+                <ScalarProperty Name="SAMPLE_BODY" ColumnName="SAMPLE_BODY" />
+                <ScalarProperty Name="APPLY_DEP_CODE" ColumnName="APPLY_DEP_CODE" />
+                <ScalarProperty Name="APPLY_DEP_NAME" ColumnName="APPLY_DEP_NAME" />
+                <ScalarProperty Name="APPLY_DATE" ColumnName="APPLY_DATE" />
+                <ScalarProperty Name="SAMPLING_DATE" ColumnName="SAMPLING_DATE" />
+                <ScalarProperty Name="RECEIVE_DATE" ColumnName="RECEIVE_DATE" />
+                <ScalarProperty Name="TEST_DATE" ColumnName="TEST_DATE" />
+                <ScalarProperty Name="REPORT_DATE" ColumnName="REPORT_DATE" />
+                <ScalarProperty Name="REPORT_DOCTOR_NAME" ColumnName="REPORT_DOCTOR_NAME" />
+                <ScalarProperty Name="UPD_DATE" ColumnName="UPD_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CPAT_TEST_RESULT">
+            <EntityTypeMapping TypeName="HJ_GZFE_SDRModel.CPAT_TEST_RESULT">
+              <MappingFragment StoreEntitySet="CPAT_TEST_RESULT">
+                <ScalarProperty Name="RESULT_ID" ColumnName="RESULT_ID" />
+                <ScalarProperty Name="SAMPLE_NO" ColumnName="SAMPLE_NO" />
+                <ScalarProperty Name="PATIENT_NO" ColumnName="PATIENT_NO" />
+                <ScalarProperty Name="IN_FLAG" ColumnName="IN_FLAG" />
+                <ScalarProperty Name="PATIENT_ID" ColumnName="PATIENT_ID" />
+                <ScalarProperty Name="RESULT_ITEM_CODE" ColumnName="RESULT_ITEM_CODE" />
+                <ScalarProperty Name="RESULT_ITEM_NAME" ColumnName="RESULT_ITEM_NAME" />
+                <ScalarProperty Name="RESULT_VALUE" ColumnName="RESULT_VALUE" />
+                <ScalarProperty Name="RESULT_UNIT" ColumnName="RESULT_UNIT" />
+                <ScalarProperty Name="REF_RANGE" ColumnName="REF_RANGE" />
+                <ScalarProperty Name="MIN_RANGE" ColumnName="MIN_RANGE" />
+                <ScalarProperty Name="MAX_RANGE" ColumnName="MAX_RANGE" />
+                <ScalarProperty Name="RESULT_STATUS" ColumnName="RESULT_STATUS" />
+                <ScalarProperty Name="TEST_METHOD_CODE" ColumnName="TEST_METHOD_CODE" />
+                <ScalarProperty Name="TEST_METHOD_NAME" ColumnName="TEST_METHOD_NAME" />
+                <ScalarProperty Name="UPD_DATE" ColumnName="UPD_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CPAT_TEST_RESULT_GERM">
+            <EntityTypeMapping TypeName="HJ_GZFE_SDRModel.CPAT_TEST_RESULT_GERM">
+              <MappingFragment StoreEntitySet="CPAT_TEST_RESULT_GERM">
+                <ScalarProperty Name="GERM_ID" ColumnName="GERM_ID" />
+                <ScalarProperty Name="SAMPLE_NO" ColumnName="SAMPLE_NO" />
+                <ScalarProperty Name="PATIENT_NO" ColumnName="PATIENT_NO" />
+                <ScalarProperty Name="IN_FLAG" ColumnName="IN_FLAG" />
+                <ScalarProperty Name="PATIENT_ID" ColumnName="PATIENT_ID" />
+                <ScalarProperty Name="CULTURE_RESULT" ColumnName="CULTURE_RESULT" />
+                <ScalarProperty Name="GERM_CODE" ColumnName="GERM_CODE" />
+                <ScalarProperty Name="GERM_NAME" ColumnName="GERM_NAME" />
+                <ScalarProperty Name="ANTI_CODE" ColumnName="ANTI_CODE" />
+                <ScalarProperty Name="ANTI_NAME" ColumnName="ANTI_NAME" />
+                <ScalarProperty Name="NUM_RESULT" ColumnName="NUM_RESULT" />
+                <ScalarProperty Name="LETTER_RESULT" ColumnName="LETTER_RESULT" />
+                <ScalarProperty Name="UPD_DATE" ColumnName="UPD_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
