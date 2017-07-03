@@ -12,6 +12,7 @@ namespace KPIWebAPI.Controllers
     [RoutePrefix("kpi")]
     public class KPIController : ApiController, IKPI
     {
+        #region 获取KPI算法列表
 
         /// <summary>
         /// 获取KPI算法列表
@@ -38,6 +39,9 @@ namespace KPIWebAPI.Controllers
             }
             return list;
         }
+        #endregion
+
+        #region 通过KPIId获取对应脚本
 
         /// <summary>
         /// 通过KPIId获取对应脚本
@@ -67,7 +71,7 @@ namespace KPIWebAPI.Controllers
                 throw;
             }
         }
+        #endregion
 
-        
     }
 }

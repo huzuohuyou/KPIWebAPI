@@ -13,7 +13,8 @@ namespace KPIWebAPI.Controllers
     [RoutePrefix("formula")]
     public class DataItemController : ApiController, IDataItem
     {
-        
+
+        #region 返回病种下的数据项
         /// <summary>
         /// 返回病种下的数据项
         /// </summary>
@@ -37,7 +38,11 @@ namespace KPIWebAPI.Controllers
                 throw;
             }
         }
+        #endregion
 
+        #region 返回KPI指标的方法体
+
+        
         /// <summary>
         /// 返回KPI指标的方法体
         /// </summary>
@@ -60,7 +65,11 @@ namespace KPIWebAPI.Controllers
                 throw;
             }
         }
+        #endregion
 
+        #region 获取KPI对应的参数
+
+        
         /// <summary>
         /// 获取KPI对应的参数
         /// </summary>
@@ -97,6 +106,9 @@ namespace KPIWebAPI.Controllers
                 throw;
             }
         }
+        #endregion
+
+        #region 更新KPI指标方法体
 
         /// <summary>
         /// 更新KPI指标方法体
@@ -126,6 +138,9 @@ namespace KPIWebAPI.Controllers
                 throw ex;
             }
         }
+        #endregion
+
+        #region 保存KPI算法公式
 
         /// <summary>
         /// 保存KPI算法公式
@@ -137,6 +152,9 @@ namespace KPIWebAPI.Controllers
         {
             return new Formula() {Param= SaveFormulaParam(f.Param),Body= SavaFormulaBody(f.Body) };
         }
+        #endregion
+
+        #region 更新KPI指标算法参数
 
         /// <summary>
         /// 更新KPI指标算法参数
@@ -173,7 +191,7 @@ namespace KPIWebAPI.Controllers
                 throw;
             }
         }
-
+        #endregion
 
     }
 }

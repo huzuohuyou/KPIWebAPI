@@ -6,12 +6,15 @@ using System.Web.Http;
 
 namespace KPIWebAPI.Controllers
 {
+
     /// <summary>
     /// 计算KPI结果API
     /// </summary>
     [RoutePrefix("kpiresult")]
     public class KPIResultController : ApiController, ICalKPIJob
     {
+        #region 计算病人KPI，并存库，参数自取
+
         /// <summary>
         /// 计算病人KPI，并存库，参数自取
         /// </summary>
@@ -64,6 +67,10 @@ namespace KPIWebAPI.Controllers
                 throw;
             }
         }
+        #endregion
+
+        #region 返回KPI结果值，不存库，参数由外部提供
+
 
         /// <summary>
         /// 返回KPI结果值，不存库，参数由外部提供
@@ -116,7 +123,16 @@ namespace KPIWebAPI.Controllers
                 throw;
             }
         }
+        #endregion
 
+        #region 获取参数列表
+
+        /// <summary>
+        /// 获取参数列表
+        /// </summary>
+        /// <param name="patientId"></param>
+        /// <param name="ep_kpi_param_List"></param>
+        /// <returns></returns>
         [NonAction]
         public List<Param> GetParamList(string patientId, List<EP_KPI_PARAM> ep_kpi_param_List)
         {
@@ -139,7 +155,16 @@ namespace KPIWebAPI.Controllers
                 );
             return result;
         }
+        #endregion
 
+        #region 获取参数值
+
+        /// <summary>
+        /// 获取参数值
+        /// </summary>
+        /// <param name="sd_item_info"></param>
+        /// <param name="patient_id"></param>
+        /// <returns></returns>
         [NonAction]
         public dynamic GetParamValue(SD_ITEM_INFO sd_item_info, string patient_id)
         {
@@ -151,7 +176,14 @@ namespace KPIWebAPI.Controllers
                 && r.PATIENT_ID == patient_id)?.SD_ITEM_VALUE;
             }
         }
+        #endregion
 
+        #region 存储KPI值
+
+        /// <summary>
+        /// 存储KPI值
+        /// </summary>
+        /// <param name="value"></param>
         [NonAction]
         private void StoreKPI(ED_KPI_VALUE value)
         {
@@ -170,5 +202,7 @@ namespace KPIWebAPI.Controllers
             }
 
         }
+        #endregion
+
     }
 }
