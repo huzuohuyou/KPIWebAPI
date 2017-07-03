@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KPIWebApi.Models", "KPIWebA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KPIWebApi.ViewModels", "KPIWebApi.ViewModels\KPIWebApi.ViewModels.csproj", "{5961A3A1-7FB1-46E6-9B29-926CC9A591BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KPIWebApi.Utils", "KPIWebApi.Utils\KPIWebApi.Utils.csproj", "{B92B2FDB-2880-4B76-9FA3-3F41CB9BAEBF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{5961A3A1-7FB1-46E6-9B29-926CC9A591BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5961A3A1-7FB1-46E6-9B29-926CC9A591BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5961A3A1-7FB1-46E6-9B29-926CC9A591BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B92B2FDB-2880-4B76-9FA3-3F41CB9BAEBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B92B2FDB-2880-4B76-9FA3-3F41CB9BAEBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B92B2FDB-2880-4B76-9FA3-3F41CB9BAEBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B92B2FDB-2880-4B76-9FA3-3F41CB9BAEBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

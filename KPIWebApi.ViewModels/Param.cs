@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KPIWebAPI.Models
+namespace KPIWebAPI.ViewModels
 {
     public class Param
     {

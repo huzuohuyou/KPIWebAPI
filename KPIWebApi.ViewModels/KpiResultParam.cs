@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KPIWebAPI.Models
+namespace KPIWebAPI.ViewModels
 {
     public class KpiResultParam
     {

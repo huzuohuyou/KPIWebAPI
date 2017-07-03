@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using KPIWebAPI.Models;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace KPIWebAPI.Models
+namespace KPIWebAPI.ViewModels
 {
     public class KPINode
     {

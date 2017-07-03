@@ -507,21 +507,21 @@
             <param name="kpiId"></param>
             <returns></returns>
         </member>
-        <member name="M:KPIWebAPI.Controllers.DataItemController.SavaFormulaBody(KPIWebAPI.Models.FormulaBody)">
+        <member name="M:KPIWebAPI.Controllers.DataItemController.SavaFormulaBody(KPIWebAPI.ViewModels.FormulaBody)">
             <summary>
             更新KPI指标方法体
             </summary>
             <param name="body"></param>
             <returns></returns>
         </member>
-        <member name="M:KPIWebAPI.Controllers.DataItemController.SaveFormula(KPIWebAPI.Models.Formula)">
+        <member name="M:KPIWebAPI.Controllers.DataItemController.SaveFormula(KPIWebAPI.ViewModels.Formula)">
             <summary>
             保存KPI算法公式
             </summary>
             <param name="f"></param>
             <returns></returns>
         </member>
-        <member name="M:KPIWebAPI.Controllers.DataItemController.SaveFormulaParam(System.Collections.Generic.List{KPIWebAPI.Models.Param})">
+        <member name="M:KPIWebAPI.Controllers.DataItemController.SaveFormulaParam(System.Collections.Generic.List{KPIWebAPI.ViewModels.Param})">
             <summary>
             更新KPI指标算法参数
             </summary>
@@ -551,19 +551,41 @@
             计算KPI结果API
             </summary>
         </member>
-        <member name="M:KPIWebAPI.Controllers.KPIResultController.Run(KPIWebAPI.Models.KpiResultParam)">
+        <member name="M:KPIWebAPI.Controllers.KPIResultController.Run(KPIWebAPI.ViewModels.KpiResultParam)">
             <summary>
             计算病人KPI，并存库，参数自取
             </summary>
             <param kparam="sdCode">参数实体</param>
             <returns></returns>
         </member>
-        <member name="M:KPIWebAPI.Controllers.KPIResultController.RunWithParam(KPIWebAPI.Models.KpiParam)">
+        <member name="M:KPIWebAPI.Controllers.KPIResultController.RunWithParam(KPIWebAPI.ViewModels.KpiParam)">
             <summary>
             返回KPI结果值，不存库，参数由外部提供
             </summary>
             <param name="kparam"></param>
             <returns></returns>
+        </member>
+        <member name="M:KPIWebAPI.Controllers.KPIResultController.GetParamList(System.String,System.Collections.Generic.List{KPIWebAPI.EP_KPI_PARAM})">
+            <summary>
+            获取参数列表
+            </summary>
+            <param name="patientId"></param>
+            <param name="ep_kpi_param_List"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KPIWebAPI.Controllers.KPIResultController.GetParamValue(KPIWebAPI.SD_ITEM_INFO,System.String)">
+            <summary>
+            获取参数值
+            </summary>
+            <param name="sd_item_info"></param>
+            <param name="patient_id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KPIWebAPI.Controllers.KPIResultController.StoreKPI(KPIWebAPI.ED_KPI_VALUE)">
+            <summary>
+            存储KPI值
+            </summary>
+            <param name="value"></param>
         </member>
     </members>
 </doc>

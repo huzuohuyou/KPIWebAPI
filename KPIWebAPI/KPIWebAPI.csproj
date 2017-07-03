@@ -255,7 +255,6 @@
     <Compile Include="Controllers\IKPI.cs" />
     <Compile Include="Controllers\KPIController.cs" />
     <Compile Include="Controllers\KPIResultController.cs" />
-    <Compile Include="Controllers\UsingPython.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -408,6 +407,10 @@
     <ProjectReference Include="..\KPIWebApi.Models\KPIWebApi.Models.csproj">
       <Project>{153c162c-20bd-404c-8a6b-1bdda63598da}</Project>
       <Name>KPIWebApi.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KPIWebApi.Utils\KPIWebApi.Utils.csproj">
+      <Project>{b92b2fdb-2880-4b76-9fa3-3f41cb9baebf}</Project>
+      <Name>KPIWebApi.Utils</Name>
     </ProjectReference>
     <ProjectReference Include="..\KPIWebApi.ViewModels\KPIWebApi.ViewModels.csproj">
       <Project>{5961a3a1-7fb1-46e6-9b29-926cc9a591be}</Project>

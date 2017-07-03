@@ -1,4 +1,4 @@
-﻿using KPIWebAPI.Models;
+﻿using KPIWebAPI.ViewModels;
 using System.Collections.Generic;
 
 namespace KPIWebAPI.Controllers

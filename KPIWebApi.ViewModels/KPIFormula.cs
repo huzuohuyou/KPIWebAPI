@@ -1,8 +1,9 @@
-﻿using System;
+﻿using KPIWebAPI.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace KPIWebAPI.Models
+namespace KPIWebAPI.ViewModels
 {
     public class KPIFormula
     {
