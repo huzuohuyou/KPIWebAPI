@@ -7,8 +7,17 @@ namespace KPIWebAPI.ViewModels
 {
     public class SimpleParam
     {
+        /// <summary>
+        /// 数据项编码
+        /// </summary>
         public string Code { get; set; }
+        /// <summary>
+        /// 数据项数据类型
+        /// </summary>
         public string DataType { get; set; }
+        /// <summary>
+        /// 数据项值
+        /// </summary>
         public string Value { get; set; }
         public dynamic FixValue
         {

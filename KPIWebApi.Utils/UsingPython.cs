@@ -12,6 +12,11 @@ namespace KPIWebAPI.Utils
         ScriptScope scope ;
         ScriptSource source;
         private UsingPython() { }
+
+        /// <summary>
+        /// 传参公式字符串初始化引擎
+        /// </summary>
+        /// <param name="ScriptString"></param>
         public UsingPython(string ScriptString)
         {
             engine = Python.CreateEngine();
@@ -19,7 +24,15 @@ namespace KPIWebAPI.Utils
             source = engine.CreateScriptSourceFromString(ScriptString);
         }
 
-        
+        /// <summary>
+        /// 传参公式实体初始化引擎
+        /// </summary>
+        /// <param name="formula"></param>
+        public UsingPython(KPIFormula formula) : this(formula.KPIScript)
+        {
+
+        }
+
         public object ExcuteScriptString(string pyContent, List<Param> paramList)
         {
             try
@@ -67,6 +80,11 @@ namespace KPIWebAPI.Utils
             }
         }
 
+        /// <summary>
+        /// 简要传参数，执行KPI算法
+        /// </summary>
+        /// <param name="paramList"></param>
+        /// <returns></returns>
         public object ExcuteScriptFile(List<SimpleParam> paramList)
         {
             try
