@@ -94,7 +94,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MongoDBHelper.cs" />
+    <Compile Include="ICanAssembleFormula.cs" />
     <Compile Include="MongoCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsingPython.cs" />

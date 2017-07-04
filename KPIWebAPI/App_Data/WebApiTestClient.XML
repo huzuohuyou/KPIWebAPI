@@ -481,6 +481,26 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="M:KPIWebAPI.Areas.InGroup.Controllers.InGroupController.PushAllRecord(System.Int32)">
+            <summary>
+            按指定个数向mongodb灌入数据
+            </summary>
+            <param name="count"></param>
+        </member>
+        <member name="M:KPIWebAPI.Areas.InGroup.Controllers.InGroupController.PushPageRecord(System.Int32,System.Int32)">
+            <summary>
+            将指定页的数据灌入mongodb
+            </summary>
+            <param name="pageNo"></param>
+            <param name="count"></param>
+        </member>
+        <member name="M:KPIWebAPI.Areas.InGroup.Controllers.InGroupController.PushInMongo(System.String)">
+            <summary>
+            灌入指定patient_no数据
+            </summary>
+            <param name="patient_no"></param>
+            <returns></returns>
+        </member>
         <member name="T:KPIWebAPI.Controllers.DataItemController">
             <summary>
             KPI公式接口API

@@ -17,7 +17,7 @@ namespace XKPI.Utils
     {
         #region property
         private const string connectionString = "mongodb://127.0.0.1:27017";
-        private const string databaseName = "test";
+        private const string databaseName = "xcdr";
         private Mongo mongo;
         private MongoDatabase mongoDatabase;
         private MongoCollection<T> mongoCollection;

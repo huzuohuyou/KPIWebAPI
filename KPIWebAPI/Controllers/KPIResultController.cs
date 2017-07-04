@@ -1,4 +1,5 @@
 ﻿using KPIWebApi.Models;
+using KPIWebApi.Utils;
 using KPIWebAPI.Models;
 using KPIWebAPI.Utils;
 using KPIWebAPI.ViewModels;
@@ -14,7 +15,7 @@ namespace KPIWebAPI.Controllers
     /// 计算KPI结果API
     /// </summary>
     [RoutePrefix("kpiresult")]
-    public class KPIResultController : ApiController, ICalKPIJob
+    public class KPIResultController : ApiController, ICalKPIJob, ICanAssembleFormula
     {
         #region 计算病人KPI，并存库，参数自取
 
@@ -50,7 +51,7 @@ namespace KPIWebAPI.Controllers
                             var body = db.EP_KPI_SET.FirstOrDefault(b => b.KPI_ID == r.KPI_ID);
                             var param = db.EP_KPI_PARAM.ToList().Where(b => b.KPI_ID == r.KPI_ID).ToList();
                             KPIFormula formula = new KPIFormula(body, param);
-                            UsingPython python = new UsingPython(formula.KPIScript);
+                            UsingPython python = new UsingPython(formula);
                             var value = python.ExcuteScriptFile(GetParamList(p, param)).ToString();
                             int rr;
                             int.TryParse(value, out rr);
@@ -107,7 +108,7 @@ namespace KPIWebAPI.Controllers
                             var body = db.EP_KPI_SET.FirstOrDefault(b => b.KPI_ID == r.KPI_ID);
                             var param = db.EP_KPI_PARAM.ToList().Where(b => b.KPI_ID == r.KPI_ID).ToList();
                             KPIFormula formula = new KPIFormula(body, param);
-                            UsingPython python = new UsingPython(formula.KPIScript);
+                            UsingPython python = new UsingPython(formula);
                             var value = python.ExcuteScriptFile(kparam.KParamList).ToString();
                             int rr;
                             int.TryParse(value, out rr);
@@ -204,6 +205,11 @@ namespace KPIWebAPI.Controllers
                 throw;
             }
 
+        }
+
+        public KPIFormula AssembleFormula(int kpiid)
+        {
+            throw new NotImplementedException();
         }
         #endregion
 

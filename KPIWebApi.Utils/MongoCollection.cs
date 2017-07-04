@@ -7,7 +7,7 @@ namespace FrameWork
     {
         public static string conn = "mongodb://localhost:27017";
         static MongoClient client;
-        public static string dbName = "test";
+        public static string dbName = "xcdr";
         private static IMongoCollection<T> collection;
         private MongoCollection()
         {
@@ -20,6 +20,7 @@ namespace FrameWork
                 client = new MongoClient(conn);
                 var db = client.GetDatabase(dbName);
                 collection = db.GetCollection<T>(typeof(T).ToString().Split('+')[1]);
+                
             }
             return collection;
         }

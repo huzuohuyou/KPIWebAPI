@@ -1,4 +1,5 @@
 ﻿using IronPython.Hosting;
+using KPIWebApi.Utils;
 using KPIWebAPI.ViewModels;
 using Microsoft.Scripting.Hosting;
 using System;
@@ -17,7 +18,8 @@ namespace KPIWebAPI.Utils
         /// 传参公式字符串初始化引擎
         /// </summary>
         /// <param name="ScriptString"></param>
-        public UsingPython(string ScriptString)
+
+        protected UsingPython(string ScriptString)
         {
             engine = Python.CreateEngine();
             scope = engine.CreateScope();
@@ -31,6 +33,10 @@ namespace KPIWebAPI.Utils
         public UsingPython(KPIFormula formula) : this(formula.KPIScript)
         {
 
+        }
+        
+
+        public UsingPython(ICanAssembleFormula ican,int kpiid):this(ican.AssembleFormula(kpiid)){
         }
 
         public object ExcuteScriptString(string pyContent, List<Param> paramList)
