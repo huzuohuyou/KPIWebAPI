@@ -16,23 +16,27 @@ namespace KPIWebAPI.Areas.InGroup.Controllers
         /// <param name="taskCount">任务数</param>
         /// /// <param name="eachTimeDoCount">每个任务每次处理记录条数</param>
         [Route("task"), HttpPost]
-        public void PushTaskRecord([FromBody]int taskCount, [FromBody]int eachTimeDoCount)
+        public void PushTaskRecord(int taskCount, int eachTimeDoCount)
         {
-            int taskDoCount = 0, remainder;
+            int  remainder,sumPages,taskDoPages,remainderPages;
             List<InGroupTask.XKPI> listPat = new List<InGroupTask.XKPI>();
             using (var db = new XKPIContext())
             {
                 var patient_nos = db.CPAT_IN_PATIENT.ToList();
-                taskDoCount = patient_nos.Count / taskCount;
+                //taskDoCount = patient_nos.Count / taskCount;
+                sumPages = patient_nos.Count / eachTimeDoCount;
+                taskDoPages = sumPages / taskCount;
+                remainderPages = sumPages % taskCount;
+
                 remainder = patient_nos.Count % taskCount;
             }
 
-            for (int i = 0; i <= taskCount; i++)
+            for (int i = 0; i < taskCount; i++)
             {
-                InGroupTask tas = new InGroupTask(i * taskDoCount, taskDoCount, eachTimeDoCount);
+                InGroupTask tas = new InGroupTask(i * taskDoPages * eachTimeDoCount, taskDoPages * eachTimeDoCount, eachTimeDoCount);
                 Task.Factory.StartNew(tas.Do);
             }
-            InGroupTask ta = new InGroupTask(taskCount * taskDoCount, remainder, eachTimeDoCount);
+            InGroupTask ta = new InGroupTask(taskDoPages * taskCount * eachTimeDoCount, remainderPages * eachTimeDoCount + remainder, eachTimeDoCount);
             Task.Factory.StartNew(ta.Do);
         }
 
