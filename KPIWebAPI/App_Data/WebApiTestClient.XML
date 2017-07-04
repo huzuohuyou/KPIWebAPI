@@ -481,20 +481,39 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
-        <member name="M:KPIWebAPI.Areas.InGroup.Controllers.InGroupController.PushAllRecord(System.Int32)">
+        <member name="M:KPIWebAPI.Areas.InGroup.Controllers.InGroupController.PushTaskRecord(System.Int32,System.Int32)">
             <summary>
-            按指定个数向mongodb灌入数据
+            多线程灌入mongodb
             </summary>
-            <param name="count"></param>
+            <param name="taskCount">任务数</param>
+            /// <param name="eachTimeDoCount">每个任务每次处理记录条数</param>
         </member>
-        <member name="M:KPIWebAPI.Areas.InGroup.Controllers.InGroupController.PushPageRecord(System.Int32,System.Int32)">
+        <member name="T:KPIWebAPI.Areas.InGroup.Controllers.InGroupTask">
+            <summary>
+            入组任务
+            </summary>
+        </member>
+        <member name="M:KPIWebAPI.Areas.InGroup.Controllers.InGroupTask.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            异步灌入mongodb数据
+            </summary>
+            <param name="startNo">从第startNo个开始处理记录</param>
+            <param name="sumCount">本任务处理的记录总数</param>
+            <param name="eachTimeDoCount">每次处理的记录数</param>
+        </member>
+        <member name="M:KPIWebAPI.Areas.InGroup.Controllers.InGroupTask.PushAllRecord">
+            <summary>
+            每次按指定个数向mongodb灌入数据
+            </summary>
+        </member>
+        <member name="M:KPIWebAPI.Areas.InGroup.Controllers.InGroupTask.PushPageRecord(System.Int32,System.Int32)">
             <summary>
             将指定页的数据灌入mongodb
             </summary>
             <param name="pageNo"></param>
             <param name="count"></param>
         </member>
-        <member name="M:KPIWebAPI.Areas.InGroup.Controllers.InGroupController.PushInMongo(System.String)">
+        <member name="M:KPIWebAPI.Areas.InGroup.Controllers.InGroupTask.PushInMongo(System.String)">
             <summary>
             灌入指定patient_no数据
             </summary>

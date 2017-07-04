@@ -1,15 +1,15 @@
 ﻿using MongoDB.Driver;
 using MongoDB.Bson;
 
-namespace FrameWork
+namespace KpiWebApi.Utils
 {
-    public class MongoCollection<T> where T : class, new()
+    public class MyMongoCollection<T> where T : class, new()
     {
         public static string conn = "mongodb://localhost:27017";
         static MongoClient client;
         public static string dbName = "xcdr";
         private static IMongoCollection<T> collection;
-        private MongoCollection()
+        private MyMongoCollection()
         {
            
         }

@@ -270,6 +270,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Areas\InGroup\Controllers\InGroupController.cs" />
+    <Compile Include="Areas\InGroup\Controllers\InGroupTask.cs" />
     <Compile Include="Areas\InGroup\InGroupAreaRegistration.cs" />
     <Compile Include="Controllers\APPController.cs" />
     <Compile Include="Controllers\DataItemController.cs" />
