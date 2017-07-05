@@ -4,12 +4,16 @@ using System.Web.Http;
 using MongoDB.Driver;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using NLog;
+using KPIWebAPI.Areas.InGroup.Models;
 
 namespace KPIWebAPI.Areas.InGroup.Controllers
 {
     [RoutePrefix("group")]
     public class InGroupController : ApiController
     {
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+        InGroupCache cache;
         /// <summary>
         /// 多线程灌入mongodb
         /// </summary>
@@ -28,9 +32,11 @@ namespace KPIWebAPI.Areas.InGroup.Controllers
                 taskDoPages = sumPages / taskCount;
                 remainderPages = sumPages % taskCount;
 
-                remainder = patient_nos.Count % taskCount;
+                remainder = patient_nos.Count % eachTimeDoCount;
+                logger.Debug(string.Format("共{0}条数据，{1}+1个工作线程，{2}页数据，每页{6}条，每个线程分配{3}页数据，剩余{4}页{5}条数据",
+                    patient_nos.Count, taskCount, sumPages, taskDoPages, remainderPages, remainder, eachTimeDoCount));
             }
-
+            //cache = InGroupCache.GetInstance();
             for (int i = 0; i < taskCount; i++)
             {
                 InGroupTask tas = new InGroupTask(i * taskDoPages * eachTimeDoCount, taskDoPages * eachTimeDoCount, eachTimeDoCount);

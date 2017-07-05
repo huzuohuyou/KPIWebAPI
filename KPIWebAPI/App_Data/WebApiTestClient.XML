@@ -513,7 +513,7 @@
             <param name="pageNo"></param>
             <param name="count"></param>
         </member>
-        <member name="M:KPIWebAPI.Areas.InGroup.Controllers.InGroupTask.PushInMongo(System.String)">
+        <member name="M:KPIWebAPI.Areas.InGroup.Controllers.InGroupTask.PushInMongo(KPIWebApi.Models.XKPI.XKPIContext,System.String)">
             <summary>
             灌入指定patient_no数据
             </summary>

@@ -108,14 +108,21 @@
     <Reference Include="MongoDB.GridFS">
       <HintPath>E:\MongoDBDriver-Release-0.90.0-Beta-1\MongoDB.GridFS.dll</HintPath>
     </Reference>
+    <Reference Include="NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.5.0.0-beta09\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -272,6 +279,7 @@
     <Compile Include="Areas\InGroup\Controllers\InGroupController.cs" />
     <Compile Include="Areas\InGroup\Controllers\InGroupTask.cs" />
     <Compile Include="Areas\InGroup\InGroupAreaRegistration.cs" />
+    <Compile Include="Areas\InGroup\Models\InGroupCache.cs" />
     <Compile Include="Controllers\APPController.cs" />
     <Compile Include="Controllers\DataItemController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -383,6 +391,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TestClientReferences.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TestClientDialogs.cshtml" />
     <Content Include="Areas\InGroup\Views\web.config" />
+    <Content Include="NLog.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -417,7 +426,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\InGroup\Models\" />
     <Folder Include="Areas\InGroup\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
