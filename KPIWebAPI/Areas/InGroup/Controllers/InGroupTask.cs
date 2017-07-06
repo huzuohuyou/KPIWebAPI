@@ -85,7 +85,8 @@ namespace KPIWebAPI.Areas.InGroup.Controllers
                     PushPageRecord(i, eachTimeDoCount);
                 }
                 logger.Debug(string.Format("线程{1}处理了{0}页数据", JsonConvert.SerializeObject(listPageNo), Thread.CurrentThread.ManagedThreadId));
-                PushPageRecord(endPage, eachTimeDoCount);
+                //处理余数
+                PushPageRecord(endPage, remainder);
             }
             catch (System.Exception ex)
             {
