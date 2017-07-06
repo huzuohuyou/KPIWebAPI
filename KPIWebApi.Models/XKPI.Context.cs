@@ -18,6 +18,7 @@ namespace KPIWebApi.Models
         public XKPIEntities()
             : base("name=XKPIEntities")
         {
+            
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

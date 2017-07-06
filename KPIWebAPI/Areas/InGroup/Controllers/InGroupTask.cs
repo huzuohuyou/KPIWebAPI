@@ -44,27 +44,55 @@ namespace KPIWebAPI.Areas.InGroup.Controllers
         /// </summary>
         public void PushAllRecord()
         {
-
-            int pageCount = 0,
+            try
+            {
+                int pageCount = 0,
                 remainder,
                 statPage = startNo / eachTimeDoCount,
                 endPage = 0;
-            List<InGroupTask.XKPI> listPat = new List<InGroupTask.XKPI>();
-            using (var db = new XKPIContext())
-            {
-                var patient_nos = db.CPAT_IN_PATIENT.OrderBy(p => p.PATIENT_ID).Skip(startNo).Take(sumCount).GroupBy(p => new { p.PATIENT_NO }).Select(p => p.Key).ToList();
-                pageCount = patient_nos.Count / eachTimeDoCount;
-                endPage = statPage + pageCount;
-                remainder = patient_nos.Count % eachTimeDoCount;
+                List<InGroupTask.XKPI> listPat = new List<InGroupTask.XKPI>();
+                using (var db = new XKPIContext())
+                {
+                    db.CPAT_IN_PATIENT.Include("CPAT_CHECK_RECORD");
+                    db.CPAT_IN_PATIENT.Include("CPAT_DIAGNOSIS");
+                    db.CPAT_IN_PATIENT.Include("CPAT_EMR_RECORD");
+                    db.CPAT_IN_PATIENT.Include("CPAT_IN_ORDERS");
+                    db.CPAT_IN_PATIENT.Include("CPAT_IN_PATIENT");
+                    db.CPAT_IN_PATIENT.Include("CPAT_OUT_EMR");
+                    db.CPAT_IN_PATIENT.Include("CPAT_OUT_PATIENT");
+                    db.CPAT_IN_PATIENT.Include("CPAT_OUT_RECIPE");
+                    db.CPAT_IN_PATIENT.Include("CPAT_PATHOLOGY_RECORD");
+                    db.CPAT_IN_PATIENT.Include("CPAT_TEST_RECORD");
+                    db.CPAT_IN_PATIENT.Include("CPAT_TEST_RESULT");
+                    db.CPAT_IN_PATIENT.Include("CPAT_TEST_RESULT_GERM");
+
+
+                    //var patient_nos = db.CPAT_IN_PATIENT.OrderBy(p => p.PATIENT_ID).Skip(startNo).Take(sumCount).GroupBy(p => new { p.PATIENT_NO }).Select(p => p.Key).ToList();
+                    //pageCount = patient_nos.Count / eachTimeDoCount;
+                    //endPage = statPage + pageCount;
+                    //remainder = patient_nos.Count % eachTimeDoCount;
+
+                    //优化计数sumCount就是patient_nos.Count
+                    pageCount = sumCount / eachTimeDoCount;
+                    endPage = statPage + pageCount;
+                    remainder = sumCount % eachTimeDoCount;
+                    logger.Debug(string.Format("线程{1}处理第{0}到{2}页数据", statPage, Thread.CurrentThread.ManagedThreadId,endPage));
+                }
+                for (int i = statPage + 1; i <= endPage; i++)
+                {
+                    logger.Debug(string.Format("线程{1}处理第{0}页数据", i, Thread.CurrentThread.ManagedThreadId));
+                    listPageNo.Add(i);
+                    PushPageRecord(i, eachTimeDoCount);
+                }
+                logger.Debug(string.Format("线程{1}处理了{0}页数据", JsonConvert.SerializeObject(listPageNo), Thread.CurrentThread.ManagedThreadId));
+                PushPageRecord(endPage, eachTimeDoCount);
             }
-            for (int i = statPage + 1; i <= endPage; i++)
+            catch (System.Exception ex)
             {
-                //logger.Debug(string.Format("线程{1}处理第{0}页数据", i, Thread.CurrentThread.ManagedThreadId));
-                listPageNo.Add(i);
-                PushPageRecord(i, eachTimeDoCount);
+                logger.Debug(string.Format("EX线程{1}处理了{0}页数据", JsonConvert.SerializeObject(listPageNo), Thread.CurrentThread.ManagedThreadId));
+                logger.Error(ex.ToString());
             }
-            logger.Debug(string.Format("线程{1}处理了{0}页数据",JsonConvert.SerializeObject(listPageNo), Thread.CurrentThread.ManagedThreadId));
-            //PushPageRecord(endPage, eachTimeDoCount);
+
         }
 
         /// <summary>
@@ -88,6 +116,9 @@ namespace KPIWebAPI.Areas.InGroup.Controllers
                         list.Add(new InsertOneModel<XKPI>(iitem));
                     }
                     MyMongoCollection<XKPI>.GetInstance().InsertManyAsync(listPat);
+                    listPat = null;
+                    
+
                 }
             }
             catch (System.Exception ex)
@@ -110,29 +141,29 @@ namespace KPIWebAPI.Areas.InGroup.Controllers
             {
                 //logger.Trace(string.Format("处理{0}数据", patient_no));
                 dynamic patient = new ExpandoObject();
-                var in_pat = db.CPAT_IN_PATIENT.ToList().FirstOrDefault(r => r.PATIENT_NO == patient_no);
+                var in_pat = db.CPAT_IN_PATIENT.AsNoTracking().FirstOrDefault(r => r.PATIENT_NO == patient_no);
                 patient.CPAT_IN_PATIENT = in_pat;
-                var check_order = db.CPAT_CHECK_RECORD.Where(r => r.PATIENT_NO == patient_no).ToList();
+                var check_order = db.CPAT_CHECK_RECORD.AsNoTracking().Where(r => r.PATIENT_NO == patient_no).ToList();
                 patient.CPAT_CHECK_RECORD = check_order;
-                var diagnosis = db.CPAT_DIAGNOSIS.Where(r => r.PATIENT_NO == patient_no).ToList();
+                var diagnosis = db.CPAT_DIAGNOSIS.AsNoTracking().Where(r => r.PATIENT_NO == patient_no).ToList();
                 patient.CPAT_DIAGNOSIS = diagnosis;
-                var emr_record = db.CPAT_EMR_RECORD.Where(r => r.PATIENT_NO == patient_no).ToList();
+                var emr_record = db.CPAT_EMR_RECORD.AsNoTracking().Where(r => r.PATIENT_NO == patient_no).ToList();
                 patient.CPAT_EMR_RECORD = emr_record;
-                var in_orders = db.CPAT_IN_ORDERS.Where(r => r.PATIENT_NO == patient_no).ToList();
+                var in_orders = db.CPAT_IN_ORDERS.AsNoTracking().Where(r => r.PATIENT_NO == patient_no).ToList();
                 patient.CPAT_IN_ORDERS = in_orders;
-                var out_emr = db.CPAT_OUT_EMR.Where(r => r.PATIENT_NO == patient_no).ToList();
+                var out_emr = db.CPAT_OUT_EMR.AsNoTracking().Where(r => r.PATIENT_NO == patient_no).ToList();
                 patient.CPAT_OUT_EMR = out_emr;
-                var out_pat = db.CPAT_OUT_PATIENT.FirstOrDefault(r => r.PATIENT_NO == patient_no);
+                var out_pat = db.CPAT_OUT_PATIENT.AsNoTracking().FirstOrDefault(r => r.PATIENT_NO == patient_no);
                 patient.CPAT_OUT_PATIENT = out_pat;
-                var out_recipe = db.CPAT_OUT_RECIPE.Where(r => r.PATIENT_NO == patient_no).ToList();
+                var out_recipe = db.CPAT_OUT_RECIPE.AsNoTracking().Where(r => r.PATIENT_NO == patient_no).ToList();
                 patient.CPAT_OUT_RECIPE = out_recipe;
-                var phy_record = db.CPAT_PATHOLOGY_RECORD.Where(r => r.PATIENT_NO == patient_no).ToList();
+                var phy_record = db.CPAT_PATHOLOGY_RECORD.AsNoTracking().Where(r => r.PATIENT_NO == patient_no).ToList();
                 patient.CPAT_PATHOLOGY_RECORD = phy_record;
-                var test_record = db.CPAT_TEST_RECORD.Where(r => r.PATIENT_NO == patient_no).ToList();
+                var test_record = db.CPAT_TEST_RECORD.AsNoTracking().Where(r => r.PATIENT_NO == patient_no).ToList();
                 patient.CPAT_TEST_RECORD = test_record;
-                var test_result = db.CPAT_TEST_RESULT.Where(r => r.PATIENT_NO == patient_no).ToList();
+                var test_result = db.CPAT_TEST_RESULT.AsNoTracking().Where(r => r.PATIENT_NO == patient_no).ToList();
                 patient.CPAT_TEST_RESULT = test_result;
-                var test_result_germ = db.CPAT_TEST_RESULT_GERM.Where(r => r.PATIENT_NO == patient_no).ToList();
+                var test_result_germ = db.CPAT_TEST_RESULT_GERM.AsNoTracking().Where(r => r.PATIENT_NO == patient_no).ToList();
                 patient.CPAT_TEST_RESULT_GERM = test_result_germ;
                 XKPI x = new XKPI() { data = patient };
                 return x;

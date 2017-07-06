@@ -10,6 +10,10 @@ namespace KPIWebApi.Models.XKPI
 {
     public class XKPIContext:XKPIEntities
     {
+        public XKPIContext() {
+            this.Configuration.LazyLoadingEnabled = false;
+
+        }
         public override int SaveChanges()
         {
             try
