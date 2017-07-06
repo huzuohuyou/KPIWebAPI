@@ -13,8 +13,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KPIWebAPI</RootNamespace>
-    <AssemblyName>KPIWebAPI</AssemblyName>
+    <RootNamespace>XKPI</RootNamespace>
+    <AssemblyName>XKPI</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -248,6 +248,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\DataItem\DataItemAreaRegistration.cs" />
+    <Compile Include="Areas\DataItem\Models\SourceEntity.cs" />
+    <Compile Include="Areas\DataItem\Models\SourceItem.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
     <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
@@ -281,7 +284,8 @@
     <Compile Include="Areas\InGroup\InGroupAreaRegistration.cs" />
     <Compile Include="Areas\InGroup\Models\InGroupCache.cs" />
     <Compile Include="Controllers\APPController.cs" />
-    <Compile Include="Controllers\DataItemController.cs" />
+    <Compile Include="Controllers\FormulaController.cs" />
+    <Compile Include="Areas\DataItem\Controllers\DataItemController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IDataItem.cs" />
     <Compile Include="Controllers\IJob.cs" />
@@ -392,6 +396,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TestClientDialogs.cshtml" />
     <Content Include="Areas\InGroup\Views\web.config" />
     <Content Include="NLog.config" />
+    <Content Include="Areas\DataItem\Views\web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -426,6 +431,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\DataItem\Views\Shared\" />
     <Folder Include="Areas\InGroup\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
@@ -440,17 +446,17 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KPIWebApi.Models\KPIWebApi.Models.csproj">
+    <ProjectReference Include="..\KPIWebApi.Models\XKPI.Models.csproj">
       <Project>{153c162c-20bd-404c-8a6b-1bdda63598da}</Project>
-      <Name>KPIWebApi.Models</Name>
+      <Name>XKPI.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KPIWebApi.Utils\KPIWebApi.Utils.csproj">
+    <ProjectReference Include="..\KPIWebApi.Utils\XKPI.Utils.csproj">
       <Project>{b92b2fdb-2880-4b76-9fa3-3f41cb9baebf}</Project>
-      <Name>KPIWebApi.Utils</Name>
+      <Name>XKPI.Utils</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KPIWebApi.ViewModels\KPIWebApi.ViewModels.csproj">
+    <ProjectReference Include="..\KPIWebApi.ViewModels\XKPI.ViewModels.csproj">
       <Project>{5961a3a1-7fb1-46e6-9b29-926cc9a591be}</Project>
-      <Name>KPIWebApi.ViewModels</Name>
+      <Name>XKPI.ViewModels</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -7,8 +7,8 @@
     <ProjectGuid>{B92B2FDB-2880-4B76-9FA3-3F41CB9BAEBF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KPIWebApi.Utils</RootNamespace>
-    <AssemblyName>KPIWebApi.Utils</AssemblyName>
+    <RootNamespace>XKPI.Utils</RootNamespace>
+    <AssemblyName>XKPI.Utils</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -112,9 +112,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KPIWebApi.ViewModels\KPIWebApi.ViewModels.csproj">
+    <ProjectReference Include="..\KPIWebApi.ViewModels\XKPI.ViewModels.csproj">
       <Project>{5961a3a1-7fb1-46e6-9b29-926cc9a591be}</Project>
-      <Name>KPIWebApi.ViewModels</Name>
+      <Name>XKPI.ViewModels</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

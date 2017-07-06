@@ -7,8 +7,8 @@
     <ProjectGuid>{5961A3A1-7FB1-46E6-9B29-926CC9A591BE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KPIWebApi.ViewModels</RootNamespace>
-    <AssemblyName>KPIWebApi.ViewModels</AssemblyName>
+    <RootNamespace>XKPI.ViewModels</RootNamespace>
+    <AssemblyName>XKPI.ViewModels</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -60,9 +60,9 @@
     <Compile Include="SimpleParam.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KPIWebApi.Models\KPIWebApi.Models.csproj">
+    <ProjectReference Include="..\KPIWebApi.Models\XKPI.Models.csproj">
       <Project>{153c162c-20bd-404c-8a6b-1bdda63598da}</Project>
-      <Name>KPIWebApi.Models</Name>
+      <Name>XKPI.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

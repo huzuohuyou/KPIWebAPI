@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using XKPI.Models;
 
 namespace KPIWebAPI.Areas.InGroup.Models
 {

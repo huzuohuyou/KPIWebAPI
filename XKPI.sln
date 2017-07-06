@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KPIWebApi", "KPIWebAPI\KPIWebApi.csproj", "{393EE3A7-9211-46C4-9DEF-0174857FA66A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XKPI", "KPIWebAPI\XKPI.csproj", "{393EE3A7-9211-46C4-9DEF-0174857FA66A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KPIWebApi.Models", "KPIWebApi.Models\KPIWebApi.Models.csproj", "{153C162C-20BD-404C-8A6B-1BDDA63598DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XKPI.Models", "KPIWebApi.Models\XKPI.Models.csproj", "{153C162C-20BD-404C-8A6B-1BDDA63598DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KPIWebApi.ViewModels", "KPIWebApi.ViewModels\KPIWebApi.ViewModels.csproj", "{5961A3A1-7FB1-46E6-9B29-926CC9A591BE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XKPI.ViewModels", "KPIWebApi.ViewModels\XKPI.ViewModels.csproj", "{5961A3A1-7FB1-46E6-9B29-926CC9A591BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KPIWebApi.Utils", "KPIWebApi.Utils\KPIWebApi.Utils.csproj", "{B92B2FDB-2880-4B76-9FA3-3F41CB9BAEBF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XKPI.Utils", "KPIWebApi.Utils\XKPI.Utils.csproj", "{B92B2FDB-2880-4B76-9FA3-3F41CB9BAEBF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

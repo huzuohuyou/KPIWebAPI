@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>KPIWebAPI</name>
+        <name>XKPI</name>
     </assembly>
     <members>
         <member name="M:KPIWebAPI.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
@@ -520,47 +520,47 @@
             <param name="patient_no"></param>
             <returns></returns>
         </member>
-        <member name="T:KPIWebAPI.Controllers.DataItemController">
+        <member name="T:KPIWebAPI.Controllers.FormulaController">
             <summary>
             KPI公式接口API
             </summary>
         </member>
-        <member name="M:KPIWebAPI.Controllers.DataItemController.SDDataItemDict(System.String)">
+        <member name="M:KPIWebAPI.Controllers.FormulaController.SDDataItemDict(System.String)">
             <summary>
             返回病种下的数据项
             </summary>
             <param name="sdCode"></param>
             <returns></returns>
         </member>
-        <member name="M:KPIWebAPI.Controllers.DataItemController.KPIFormulaBody(System.Int32)">
+        <member name="M:KPIWebAPI.Controllers.FormulaController.KPIFormulaBody(System.Int32)">
             <summary>
             返回KPI指标的方法体
             </summary>
             <param name="kpiId"></param>
             <returns></returns>
         </member>
-        <member name="M:KPIWebAPI.Controllers.DataItemController.KPIParams(System.Int32)">
+        <member name="M:KPIWebAPI.Controllers.FormulaController.KPIParams(System.Int32)">
             <summary>
             获取KPI对应的参数
             </summary>
             <param name="kpiId"></param>
             <returns></returns>
         </member>
-        <member name="M:KPIWebAPI.Controllers.DataItemController.SavaFormulaBody(KPIWebAPI.ViewModels.FormulaBody)">
+        <member name="M:KPIWebAPI.Controllers.FormulaController.SavaFormulaBody(KPIWebAPI.ViewModels.FormulaBody)">
             <summary>
             更新KPI指标方法体
             </summary>
             <param name="body"></param>
             <returns></returns>
         </member>
-        <member name="M:KPIWebAPI.Controllers.DataItemController.SaveFormula(KPIWebAPI.ViewModels.Formula)">
+        <member name="M:KPIWebAPI.Controllers.FormulaController.SaveFormula(KPIWebAPI.ViewModels.Formula)">
             <summary>
             保存KPI算法公式
             </summary>
             <param name="f"></param>
             <returns></returns>
         </member>
-        <member name="M:KPIWebAPI.Controllers.DataItemController.SaveFormulaParam(System.Collections.Generic.List{KPIWebAPI.ViewModels.Param})">
+        <member name="M:KPIWebAPI.Controllers.FormulaController.SaveFormulaParam(System.Collections.Generic.List{KPIWebAPI.ViewModels.Param})">
             <summary>
             更新KPI指标算法参数
             </summary>
@@ -604,7 +604,7 @@
             <param name="kparam"></param>
             <returns></returns>
         </member>
-        <member name="M:KPIWebAPI.Controllers.KPIResultController.GetParamList(System.String,System.Collections.Generic.List{KPIWebApi.Models.EP_KPI_PARAM})">
+        <member name="M:KPIWebAPI.Controllers.KPIResultController.GetParamList(System.String,System.Collections.Generic.List{XKPI.Models.EP_KPI_PARAM})">
             <summary>
             获取参数列表
             </summary>
@@ -612,7 +612,7 @@
             <param name="ep_kpi_param_List"></param>
             <returns></returns>
         </member>
-        <member name="M:KPIWebAPI.Controllers.KPIResultController.GetParamValue(KPIWebApi.Models.SD_ITEM_INFO,System.String)">
+        <member name="M:KPIWebAPI.Controllers.KPIResultController.GetParamValue(XKPI.Models.SD_ITEM_INFO,System.String)">
             <summary>
             获取参数值
             </summary>
@@ -620,7 +620,7 @@
             <param name="patient_id"></param>
             <returns></returns>
         </member>
-        <member name="M:KPIWebAPI.Controllers.KPIResultController.StoreKPI(KPIWebApi.Models.ED_KPI_VALUE)">
+        <member name="M:KPIWebAPI.Controllers.KPIResultController.StoreKPI(XKPI.Models.ED_KPI_VALUE)">
             <summary>
             存储KPI值
             </summary>

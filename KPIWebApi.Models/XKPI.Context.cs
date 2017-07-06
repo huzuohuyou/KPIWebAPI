@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KPIWebApi.Models
+namespace XKPI.Models
 {
     using System;
     using System.Data.Entity;
@@ -18,7 +18,6 @@ namespace KPIWebApi.Models
         public XKPIEntities()
             : base("name=XKPIEntities")
         {
-            
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

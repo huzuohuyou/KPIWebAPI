@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using XKPI.Models;
 
 namespace KPIWebAPI.Controllers
 {
@@ -13,7 +14,7 @@ namespace KPIWebAPI.Controllers
     /// KPI公式接口API
     /// </summary>
     [RoutePrefix("formula")]
-    public class DataItemController : ApiController, IDataItem
+    public class FormulaController : ApiController, IDataItem
     {
 
         #region 返回病种下的数据项

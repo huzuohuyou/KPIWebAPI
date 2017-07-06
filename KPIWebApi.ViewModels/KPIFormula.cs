@@ -3,6 +3,7 @@ using KPIWebAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using XKPI.Models;
 
 namespace KPIWebAPI.ViewModels
 {

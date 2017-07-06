@@ -7,8 +7,8 @@
     <ProjectGuid>{153C162C-20BD-404C-8A6B-1BDDA63598DA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KPIWebApi.Models</RootNamespace>
-    <AssemblyName>KPIWebApi.Models</AssemblyName>
+    <RootNamespace>XKPI.Models</RootNamespace>
+    <AssemblyName>XKPI.Models</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

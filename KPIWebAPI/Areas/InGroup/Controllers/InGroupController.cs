@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using NLog;
 using KPIWebAPI.Areas.InGroup.Models;
+using XKPI.Areas.DataItem.Models;
 
 namespace KPIWebAPI.Areas.InGroup.Controllers
 {
@@ -14,6 +15,7 @@ namespace KPIWebAPI.Areas.InGroup.Controllers
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
         InGroupCache cache;
+
         /// <summary>
         /// 多线程灌入mongodb
         /// </summary>
