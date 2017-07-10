@@ -4,6 +4,7 @@ using KPIWebAPI.ViewModels;
 using Microsoft.Scripting.Hosting;
 using System;
 using System.Collections.Generic;
+using XKPI.Utils;
 
 namespace KPIWebAPI.Utils
 {
@@ -34,10 +35,13 @@ namespace KPIWebAPI.Utils
         {
 
         }
-        
 
-        public UsingPython(ICanAssembleFormula ican,int kpiid):this(ican.AssembleFormula(kpiid)){
+        public UsingPython(AbsAssembleFormula ican) : this(ican.AssembleFormula())
+        {
+
         }
+
+        
 
         public object ExcuteScriptString(string pyContent, List<Param> paramList)
         {
@@ -114,6 +118,33 @@ namespace KPIWebAPI.Utils
         }
 
 
+        public string GetDemo() {
+            return @"using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using KPIWebAPI.ViewModels;
+using XKPI.Models;
+using KPIWebAPI.Models;
 
+namespace XKPI.Utils
+{
+    class UPDemo : AbsAssembleFormula
+    {
+        public UPDemo(int kpiid):base(kpiid) { }
+        public override KPIFormula AssembleFormula()
+        {
+            using (var db = new KPIContext())
+            {
+                EP_KPI_SET body = db.EP_KPI_SET.FirstOrDefault(r => r.KPI_ID == KPI_ID);
+                List <EP_KPI_PARAM> list = db.EP_KPI_PARAM.Where(r => r.KPI_ID == KPI_ID).ToList();
+                return new KPIFormula(body, list);
+            }
+        }
+    }
+}
+";
+        }
     }
 }
