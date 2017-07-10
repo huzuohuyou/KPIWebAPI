@@ -12,17 +12,18 @@ namespace KPIWebApi.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class EP_KPI_SET
+    public partial class TC_IN_GROUP_SETTING
     {
         public int ID { get; set; }
-        public Nullable<int> KPI_ID { get; set; }
-        public string KPI_DESC { get; set; }
-        public string NUM_FORMULA { get; set; }
-        public string FRA_FORMULA { get; set; }
-        public Nullable<int> INVALID_FLAG { get; set; }
-        public string UPD_USER_ID { get; set; }
-        public Nullable<System.DateTime> UPD_DATE { get; set; }
+        public string NAMESPACE { get; set; }
+        public string CLASS_NAME { get; set; }
+        public string FUNC_NAME { get; set; }
+        public Nullable<bool> 有效 { get; set; }
+        public Nullable<bool> 入库 { get; set; }
+        public Nullable<System.DateTime> UDP_DATE { get; set; }
+        public string UDP_USER_ID { get; set; }
+        public Nullable<int> SD_ID { get; set; }
     
-        public virtual ED_KPI_INFO ED_KPI_INFO { get; set; }
+        public virtual TC_SD_INFO TC_SD_INFO { get; set; }
     }
 }

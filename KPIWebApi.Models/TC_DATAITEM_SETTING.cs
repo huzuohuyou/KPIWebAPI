@@ -12,16 +12,20 @@ namespace KPIWebApi.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class EP_KPI_PARAM
+    public partial class TC_DATAITEM_SETTING
     {
         public int ID { get; set; }
-        public int SD_ITEM_ID { get; set; }
-        public string KPI_PARAM_NAME { get; set; }
-        public string UPD_USER_ID { get; set; }
-        public Nullable<System.DateTime> UPD_DATE { get; set; }
-        public Nullable<int> KPI_ID { get; set; }
+        public Nullable<int> SD_ITEM_ID { get; set; }
+        public string NAMESPACE { get; set; }
+        public string CLASS_NAME { get; set; }
+        public string FUNC_NAME { get; set; }
+        public Nullable<bool> ENABLED { get; set; }
+        public Nullable<bool> IN_DB { get; set; }
+        public Nullable<System.DateTime> UDP_DATE { get; set; }
+        public string UDP_USER_ID { get; set; }
+        public Nullable<int> SD_ID { get; set; }
     
-        public virtual ED_KPI_INFO ED_KPI_INFO { get; set; }
         public virtual SD_ITEM_INFO SD_ITEM_INFO { get; set; }
+        public virtual TC_SD_INFO TC_SD_INFO { get; set; }
     }
 }

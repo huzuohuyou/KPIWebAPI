@@ -247,14 +247,21 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Areas\TCInGroup\TCInGroupAreaRegistration.cs" />
+    <Compile Include="Areas\TCKPI\TCKPIAreaRegistration.cs" />
+    <Compile Include="Areas\TCProject\Controllers\ProjectController.cs" />
+    <Compile Include="Areas\TCProject\ViewModels\Page.cs" />
+    <Compile Include="Areas\TCProject\TCProjectAreaRegistration.cs" />
+    <Compile Include="Areas\TCProject\ViewModels\TcProject.cs" />
+    <Compile Include="Areas\TCSDItem\TCSDItemAreaRegistration.cs" />
     <Compile Include="Controllers\APPController.cs" />
-    <Compile Include="Controllers\DataItemController.cs" />
+    <Compile Include="Areas\TCKPI\Controllers\DataItemController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\IDataItem.cs" />
-    <Compile Include="Controllers\IJob.cs" />
-    <Compile Include="Controllers\IKPI.cs" />
-    <Compile Include="Controllers\KPIController.cs" />
-    <Compile Include="Controllers\KPIResultController.cs" />
+    <Compile Include="Areas\TCKPI\Models\IDataItem.cs" />
+    <Compile Include="Areas\TCKPI\Models\IJob.cs" />
+    <Compile Include="Areas\TCKPI\Models\IKPI.cs" />
+    <Compile Include="Areas\TCKPI\Controllers\KPIController.cs" />
+    <Compile Include="Areas\TCKPI\Controllers\KPIResultController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -357,6 +364,10 @@
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TestClientReferences.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TestClientDialogs.cshtml" />
+    <Content Include="Areas\TCInGroup\Views\web.config" />
+    <Content Include="Areas\TCSDItem\Views\web.config" />
+    <Content Include="Areas\TCKPI\Views\web.config" />
+    <Content Include="Areas\TCProject\Views\web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -391,6 +402,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\TCInGroup\Controllers\" />
+    <Folder Include="Areas\TCInGroup\Models\" />
+    <Folder Include="Areas\TCInGroup\Views\Shared\" />
+    <Folder Include="Areas\TCKPI\Views\Shared\" />
+    <Folder Include="Areas\TCProject\Views\Shared\" />
+    <Folder Include="Areas\TCSDItem\Controllers\" />
+    <Folder Include="Areas\TCSDItem\Models\" />
+    <Folder Include="Areas\TCSDItem\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

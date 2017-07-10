@@ -92,6 +92,18 @@
     <Compile Include="SD_ITEM_INFO.cs">
       <DependentUpon>KPIModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="TC_DATAITEM_SETTING.cs">
+      <DependentUpon>KPIModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TC_IN_GROUP_SETTING.cs">
+      <DependentUpon>KPIModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TC_PROJECT.cs">
+      <DependentUpon>KPIModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TC_SD_INFO.cs">
+      <DependentUpon>KPIModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="KPIModel.edmx">
@@ -119,6 +131,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

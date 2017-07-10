@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KPIWebAPI
+namespace KPIWebApi.Models
 {
     using System;
     using System.Data.Entity;
@@ -33,5 +33,9 @@ namespace KPIWebAPI
         public virtual DbSet<SD_CPATS> SD_CPATS { get; set; }
         public virtual DbSet<SD_INFO> SD_INFO { get; set; }
         public virtual DbSet<SD_ITEM_INFO> SD_ITEM_INFO { get; set; }
+        public virtual DbSet<TC_DATAITEM_SETTING> TC_DATAITEM_SETTING { get; set; }
+        public virtual DbSet<TC_IN_GROUP_SETTING> TC_IN_GROUP_SETTING { get; set; }
+        public virtual DbSet<TC_PROJECT> TC_PROJECT { get; set; }
+        public virtual DbSet<TC_SD_INFO> TC_SD_INFO { get; set; }
     }
 }

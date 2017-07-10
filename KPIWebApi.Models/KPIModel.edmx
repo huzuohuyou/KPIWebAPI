@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="KPIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="KPIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ED_KPI_INFO">
           <Key>
             <PropertyRef Name="KPI_ID" />
@@ -106,6 +106,64 @@
           <Property Name="UPD_USER_ID" Type="varchar" MaxLength="20" />
           <Property Name="UPD_DATE" Type="datetime" />
         </EntityType>
+        <EntityType Name="TC_DATAITEM_SETTING">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SD_ID" Type="int" />
+          <Property Name="SD_ITEM_ID" Type="int" />
+          <Property Name="NAMESPACE" Type="nvarchar" MaxLength="50" />
+          <Property Name="CLASS_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="FUNC_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="ENABLED" Type="bit" />
+          <Property Name="IN_DB" Type="bit" />
+          <Property Name="UDP_DATE" Type="datetime" />
+          <Property Name="UDP_USER_ID" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TC_IN_GROUP_SETTING">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="SD_ID" Type="int" />
+          <Property Name="NAMESPACE" Type="nvarchar" MaxLength="50" />
+          <Property Name="CLASS_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="FUNC_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="有效" Type="bit" />
+          <Property Name="入库" Type="bit" />
+          <Property Name="UDP_DATE" Type="datetime" />
+          <Property Name="UDP_USER_ID" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TC_PROJECT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PROJECT_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="UPD_DATE" Type="datetime" />
+          <Property Name="UDP_USER_ID" Type="nvarchar" MaxLength="50" />
+          <Property Name="CDR_IP" Type="nvarchar" MaxLength="50" />
+          <Property Name="CDR_USER_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="CDR_PWD" Type="nvarchar" MaxLength="50" />
+          <Property Name="SDRIP" Type="nvarchar" MaxLength="50" />
+          <Property Name="SDR_USER_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="SDR_PWD" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TC_SD_INFO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="PROJECT_ID" Type="int" />
+          <Property Name="SD_CODE" Type="nvarchar" MaxLength="50" />
+          <Property Name="SD_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="IN_GROUP_NUM" Type="int" />
+          <Property Name="DATAITEM_NUM" Type="int" />
+          <Property Name="CAL_KPI_NUM" Type="int" />
+          <Property Name="UDP_DATE" Type="datetime" />
+          <Property Name="UDP_USER_ID" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <Association Name="FK_ED_KPI_V_REFERENCE_ED_KPI_I">
           <End Role="ED_KPI_INFO" Type="Self.ED_KPI_INFO" Multiplicity="0..1" />
           <End Role="ED_KPI_VALUE" Type="Self.ED_KPI_VALUE" Multiplicity="*" />
@@ -178,6 +236,54 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TC_DATAI_REFERENCE_SD_ITEM_">
+          <End Role="SD_ITEM_INFO" Type="Self.SD_ITEM_INFO" Multiplicity="0..1" />
+          <End Role="TC_DATAITEM_SETTING" Type="Self.TC_DATAITEM_SETTING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SD_ITEM_INFO">
+              <PropertyRef Name="SD_ITEM_ID" />
+            </Principal>
+            <Dependent Role="TC_DATAITEM_SETTING">
+              <PropertyRef Name="SD_ITEM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TC_DATAI_REFERENCE_TC_SD_IN">
+          <End Role="TC_SD_INFO" Type="Self.TC_SD_INFO" Multiplicity="0..1" />
+          <End Role="TC_DATAITEM_SETTING" Type="Self.TC_DATAITEM_SETTING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TC_SD_INFO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TC_DATAITEM_SETTING">
+              <PropertyRef Name="SD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TC_IN_GR_REFERENCE_TC_SD_IN">
+          <End Role="TC_SD_INFO" Type="Self.TC_SD_INFO" Multiplicity="0..1" />
+          <End Role="TC_IN_GROUP_SETTING" Type="Self.TC_IN_GROUP_SETTING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TC_SD_INFO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TC_IN_GROUP_SETTING">
+              <PropertyRef Name="SD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TC_SD_IN_REFERENCE_TC_PROJE">
+          <End Role="TC_PROJECT" Type="Self.TC_PROJECT" Multiplicity="0..1" />
+          <End Role="TC_SD_INFO" Type="Self.TC_SD_INFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TC_PROJECT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TC_SD_INFO">
+              <PropertyRef Name="PROJECT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="KPIModelStoreContainer">
           <EntitySet Name="ED_KPI_INFO" EntityType="Self.ED_KPI_INFO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ED_KPI_VALUE" EntityType="Self.ED_KPI_VALUE" Schema="dbo" store:Type="Tables" />
@@ -187,6 +293,10 @@
           <EntitySet Name="SD_CPATS" EntityType="Self.SD_CPATS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SD_INFO" EntityType="Self.SD_INFO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SD_ITEM_INFO" EntityType="Self.SD_ITEM_INFO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TC_DATAITEM_SETTING" EntityType="Self.TC_DATAITEM_SETTING" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TC_IN_GROUP_SETTING" EntityType="Self.TC_IN_GROUP_SETTING" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TC_PROJECT" EntityType="Self.TC_PROJECT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TC_SD_INFO" EntityType="Self.TC_SD_INFO" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_ED_KPI_V_REFERENCE_ED_KPI_I" Association="Self.FK_ED_KPI_V_REFERENCE_ED_KPI_I">
             <End Role="ED_KPI_INFO" EntitySet="ED_KPI_INFO" />
             <End Role="ED_KPI_VALUE" EntitySet="ED_KPI_VALUE" />
@@ -211,9 +321,24 @@
             <End Role="SD_INFO" EntitySet="SD_INFO" />
             <End Role="SD_ITEM_INFO" EntitySet="SD_ITEM_INFO" />
           </AssociationSet>
+          <AssociationSet Name="FK_TC_DATAI_REFERENCE_SD_ITEM_" Association="Self.FK_TC_DATAI_REFERENCE_SD_ITEM_">
+            <End Role="SD_ITEM_INFO" EntitySet="SD_ITEM_INFO" />
+            <End Role="TC_DATAITEM_SETTING" EntitySet="TC_DATAITEM_SETTING" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TC_DATAI_REFERENCE_TC_SD_IN" Association="Self.FK_TC_DATAI_REFERENCE_TC_SD_IN">
+            <End Role="TC_SD_INFO" EntitySet="TC_SD_INFO" />
+            <End Role="TC_DATAITEM_SETTING" EntitySet="TC_DATAITEM_SETTING" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TC_IN_GR_REFERENCE_TC_SD_IN" Association="Self.FK_TC_IN_GR_REFERENCE_TC_SD_IN">
+            <End Role="TC_SD_INFO" EntitySet="TC_SD_INFO" />
+            <End Role="TC_IN_GROUP_SETTING" EntitySet="TC_IN_GROUP_SETTING" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TC_SD_IN_REFERENCE_TC_PROJE" Association="Self.FK_TC_SD_IN_REFERENCE_TC_PROJE">
+            <End Role="TC_PROJECT" EntitySet="TC_PROJECT" />
+            <End Role="TC_SD_INFO" EntitySet="TC_SD_INFO" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="KPIModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -329,6 +454,7 @@
           <Property Name="UPD_DATE" Type="DateTime" Precision="3" />
           <NavigationProperty Name="EP_KPI_PARAM" Relationship="Self.FK_EP_KPI_P_REFERENCE_SD_ITEM_" FromRole="SD_ITEM_INFO" ToRole="EP_KPI_PARAM" />
           <NavigationProperty Name="SD_INFO" Relationship="Self.FK_SD_ITEM__REFERENCE_SD_INFO" FromRole="SD_ITEM_INFO" ToRole="SD_INFO" />
+          <NavigationProperty Name="TC_DATAITEM_SETTING" Relationship="KPIModel.FK_TC_DATAI_REFERENCE_SD_ITEM_" FromRole="SD_ITEM_INFO" ToRole="TC_DATAITEM_SETTING" />
         </EntityType>
         <Association Name="FK_ED_KPI_V_REFERENCE_ED_KPI_I">
           <End Role="ED_KPI_INFO" Type="Self.ED_KPI_INFO" Multiplicity="0..1" />
@@ -435,7 +561,142 @@
             <End Role="SD_INFO" EntitySet="SD_INFO" />
             <End Role="SD_ITEM_INFO" EntitySet="SD_ITEM_INFO" />
           </AssociationSet>
+          <EntitySet Name="TC_DATAITEM_SETTING" EntityType="KPIModel.TC_DATAITEM_SETTING" />
+          <EntitySet Name="TC_IN_GROUP_SETTING" EntityType="KPIModel.TC_IN_GROUP_SETTING" />
+          <EntitySet Name="TC_PROJECT" EntityType="KPIModel.TC_PROJECT" />
+          <EntitySet Name="TC_SD_INFO" EntityType="KPIModel.TC_SD_INFO" />
+          <AssociationSet Name="FK_TC_DATAI_REFERENCE_SD_ITEM_" Association="KPIModel.FK_TC_DATAI_REFERENCE_SD_ITEM_">
+            <End Role="SD_ITEM_INFO" EntitySet="SD_ITEM_INFO" />
+            <End Role="TC_DATAITEM_SETTING" EntitySet="TC_DATAITEM_SETTING" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TC_SD_IN_REFERENCE_TC_PROJE" Association="KPIModel.FK_TC_SD_IN_REFERENCE_TC_PROJE">
+            <End Role="TC_PROJECT" EntitySet="TC_PROJECT" />
+            <End Role="TC_SD_INFO" EntitySet="TC_SD_INFO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TC_IN_GR_REFERENCE_TC_SD_IN" Association="KPIModel.FK_TC_IN_GR_REFERENCE_TC_SD_IN">
+            <End Role="TC_SD_INFO" EntitySet="TC_SD_INFO" />
+            <End Role="TC_IN_GROUP_SETTING" EntitySet="TC_IN_GROUP_SETTING" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TC_DATAI_REFERENCE_TC_SD_IN" Association="KPIModel.FK_TC_DATAI_REFERENCE_TC_SD_IN">
+            <End Role="TC_SD_INFO" EntitySet="TC_SD_INFO" />
+            <End Role="TC_DATAITEM_SETTING" EntitySet="TC_DATAITEM_SETTING" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="TC_DATAITEM_SETTING">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SD_ITEM_ID" Type="Int32" />
+          <Property Name="NAMESPACE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CLASS_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FUNC_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ENABLED" Type="Boolean" />
+          <Property Name="IN_DB" Type="Boolean" />
+          <Property Name="UDP_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UDP_USER_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SD_ITEM_INFO" Relationship="KPIModel.FK_TC_DATAI_REFERENCE_SD_ITEM_" FromRole="TC_DATAITEM_SETTING" ToRole="SD_ITEM_INFO" />
+          <Property Name="SD_ID" Type="Int32" />
+          <NavigationProperty Name="TC_SD_INFO" Relationship="KPIModel.FK_TC_DATAI_REFERENCE_TC_SD_IN" FromRole="TC_DATAITEM_SETTING" ToRole="TC_SD_INFO" />
+        </EntityType>
+        <EntityType Name="TC_IN_GROUP_SETTING">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="NAMESPACE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CLASS_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FUNC_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="有效" Type="Boolean" />
+          <Property Name="入库" Type="Boolean" />
+          <Property Name="UDP_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UDP_USER_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SD_ID" Type="Int32" />
+          <NavigationProperty Name="TC_SD_INFO" Relationship="KPIModel.FK_TC_IN_GR_REFERENCE_TC_SD_IN" FromRole="TC_IN_GROUP_SETTING" ToRole="TC_SD_INFO" />
+        </EntityType>
+        <EntityType Name="TC_PROJECT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PROJECT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CDR_SETTING" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SDR_SETTING" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UPD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UDP_USER_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TC_SD_INFO" Relationship="KPIModel.FK_TC_SD_IN_REFERENCE_TC_PROJE" FromRole="TC_PROJECT" ToRole="TC_SD_INFO" />
+          <Property Name="CDR_IP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CDR_USER_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CDR_PWD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SDRIP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SDR_USER_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SDR_PWD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TC_SD_INFO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="PROJECT_ID" Type="Int32" />
+          <Property Name="SD_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SD_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IN_GROUP_NUM" Type="Int32" />
+          <Property Name="DATAITEM_NUM" Type="Int32" />
+          <Property Name="CAL_KPI_NUM" Type="Int32" />
+          <Property Name="UDP_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UDP_USER_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TC_PROJECT" Relationship="KPIModel.FK_TC_SD_IN_REFERENCE_TC_PROJE" FromRole="TC_SD_INFO" ToRole="TC_PROJECT" />
+          <NavigationProperty Name="TC_IN_GROUP_SETTING" Relationship="KPIModel.FK_TC_IN_GR_REFERENCE_TC_SD_IN" FromRole="TC_SD_INFO" ToRole="TC_IN_GROUP_SETTING" />
+          <NavigationProperty Name="TC_DATAITEM_SETTING" Relationship="KPIModel.FK_TC_DATAI_REFERENCE_TC_SD_IN" FromRole="TC_SD_INFO" ToRole="TC_DATAITEM_SETTING" />
+        </EntityType>
+        <Association Name="FK_TC_DATAI_REFERENCE_SD_ITEM_">
+          <End Type="KPIModel.SD_ITEM_INFO" Role="SD_ITEM_INFO" Multiplicity="0..1" />
+          <End Type="KPIModel.TC_DATAITEM_SETTING" Role="TC_DATAITEM_SETTING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SD_ITEM_INFO">
+              <PropertyRef Name="SD_ITEM_ID" />
+            </Principal>
+            <Dependent Role="TC_DATAITEM_SETTING">
+              <PropertyRef Name="SD_ITEM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TC_SD_IN_REFERENCE_TC_PROJE">
+          <End Type="KPIModel.TC_PROJECT" Role="TC_PROJECT" Multiplicity="0..1" />
+          <End Type="KPIModel.TC_SD_INFO" Role="TC_SD_INFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TC_PROJECT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TC_SD_INFO">
+              <PropertyRef Name="PROJECT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TC_IN_GR_REFERENCE_TC_SD_IN">
+          <End Type="KPIModel.TC_SD_INFO" Role="TC_SD_INFO" Multiplicity="0..1" />
+          <End Type="KPIModel.TC_IN_GROUP_SETTING" Role="TC_IN_GROUP_SETTING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TC_SD_INFO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TC_IN_GROUP_SETTING">
+              <PropertyRef Name="SD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TC_DATAI_REFERENCE_TC_SD_IN">
+          <End Type="KPIModel.TC_SD_INFO" Role="TC_SD_INFO" Multiplicity="0..1" />
+          <End Type="KPIModel.TC_DATAITEM_SETTING" Role="TC_DATAITEM_SETTING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TC_SD_INFO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TC_DATAITEM_SETTING">
+              <PropertyRef Name="SD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -546,6 +807,68 @@
                 <ScalarProperty Name="ITEM_UNIT" ColumnName="ITEM_UNIT" />
                 <ScalarProperty Name="UPD_USER_ID" ColumnName="UPD_USER_ID" />
                 <ScalarProperty Name="UPD_DATE" ColumnName="UPD_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TC_DATAITEM_SETTING">
+            <EntityTypeMapping TypeName="KPIModel.TC_DATAITEM_SETTING">
+              <MappingFragment StoreEntitySet="TC_DATAITEM_SETTING">
+                <ScalarProperty Name="SD_ID" ColumnName="SD_ID" />
+                <ScalarProperty Name="UDP_USER_ID" ColumnName="UDP_USER_ID" />
+                <ScalarProperty Name="UDP_DATE" ColumnName="UDP_DATE" />
+                <ScalarProperty Name="IN_DB" ColumnName="IN_DB" />
+                <ScalarProperty Name="ENABLED" ColumnName="ENABLED" />
+                <ScalarProperty Name="FUNC_NAME" ColumnName="FUNC_NAME" />
+                <ScalarProperty Name="CLASS_NAME" ColumnName="CLASS_NAME" />
+                <ScalarProperty Name="NAMESPACE" ColumnName="NAMESPACE" />
+                <ScalarProperty Name="SD_ITEM_ID" ColumnName="SD_ITEM_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TC_IN_GROUP_SETTING">
+            <EntityTypeMapping TypeName="KPIModel.TC_IN_GROUP_SETTING">
+              <MappingFragment StoreEntitySet="TC_IN_GROUP_SETTING">
+                <ScalarProperty Name="SD_ID" ColumnName="SD_ID" />
+                <ScalarProperty Name="UDP_USER_ID" ColumnName="UDP_USER_ID" />
+                <ScalarProperty Name="UDP_DATE" ColumnName="UDP_DATE" />
+                <ScalarProperty Name="入库" ColumnName="入库" />
+                <ScalarProperty Name="有效" ColumnName="有效" />
+                <ScalarProperty Name="FUNC_NAME" ColumnName="FUNC_NAME" />
+                <ScalarProperty Name="CLASS_NAME" ColumnName="CLASS_NAME" />
+                <ScalarProperty Name="NAMESPACE" ColumnName="NAMESPACE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TC_PROJECT">
+            <EntityTypeMapping TypeName="KPIModel.TC_PROJECT">
+              <MappingFragment StoreEntitySet="TC_PROJECT">
+                <ScalarProperty Name="SDR_PWD" ColumnName="SDR_PWD" />
+                <ScalarProperty Name="SDR_USER_NAME" ColumnName="SDR_USER_NAME" />
+                <ScalarProperty Name="SDRIP" ColumnName="SDRIP" />
+                <ScalarProperty Name="CDR_PWD" ColumnName="CDR_PWD" />
+                <ScalarProperty Name="CDR_USER_NAME" ColumnName="CDR_USER_NAME" />
+                <ScalarProperty Name="CDR_IP" ColumnName="CDR_IP" />
+                <ScalarProperty Name="UDP_USER_ID" ColumnName="UDP_USER_ID" />
+                <ScalarProperty Name="UPD_DATE" ColumnName="UPD_DATE" />
+                <ScalarProperty Name="PROJECT_NAME" ColumnName="PROJECT_NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TC_SD_INFO">
+            <EntityTypeMapping TypeName="KPIModel.TC_SD_INFO">
+              <MappingFragment StoreEntitySet="TC_SD_INFO">
+                <ScalarProperty Name="UDP_USER_ID" ColumnName="UDP_USER_ID" />
+                <ScalarProperty Name="UDP_DATE" ColumnName="UDP_DATE" />
+                <ScalarProperty Name="CAL_KPI_NUM" ColumnName="CAL_KPI_NUM" />
+                <ScalarProperty Name="DATAITEM_NUM" ColumnName="DATAITEM_NUM" />
+                <ScalarProperty Name="IN_GROUP_NUM" ColumnName="IN_GROUP_NUM" />
+                <ScalarProperty Name="SD_NAME" ColumnName="SD_NAME" />
+                <ScalarProperty Name="SD_CODE" ColumnName="SD_CODE" />
+                <ScalarProperty Name="PROJECT_ID" ColumnName="PROJECT_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

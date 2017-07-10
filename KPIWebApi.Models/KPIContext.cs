@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KPIWebApi.Models;
+using System;
 using System.Data.Entity.Validation;
 using System.Text;
 

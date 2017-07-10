@@ -12,21 +12,28 @@ namespace KPIWebApi.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class SD_CPATS
+    public partial class TC_PROJECT
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SD_CPATS()
+        public TC_PROJECT()
         {
-            this.ED_KPI_VALUE = new HashSet<ED_KPI_VALUE>();
+            this.TC_SD_INFO = new HashSet<TC_SD_INFO>();
         }
     
-        public string SD_CPAT_NO { get; set; }
-        public string SD_CODE { get; set; }
-        public System.DateTime SD_CPAT_DATE { get; set; }
-        public string PATIENT_ID { get; set; }
+        public int ID { get; set; }
+        public string PROJECT_NAME { get; set; }
+        public string CDR_SETTING { get; set; }
+        public string SDR_SETTING { get; set; }
         public Nullable<System.DateTime> UPD_DATE { get; set; }
+        public string UDP_USER_ID { get; set; }
+        public string CDR_IP { get; set; }
+        public string CDR_USER_NAME { get; set; }
+        public string CDR_PWD { get; set; }
+        public string SDRIP { get; set; }
+        public string SDR_USER_NAME { get; set; }
+        public string SDR_PWD { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ED_KPI_VALUE> ED_KPI_VALUE { get; set; }
+        public virtual ICollection<TC_SD_INFO> TC_SD_INFO { get; set; }
     }
 }

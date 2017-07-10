@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7beb17f0dda04ef29ba1b3bf04febdd5" Name="Diagram1">
+      <Diagram DiagramId="7beb17f0dda04ef29ba1b3bf04febdd5" Name="Diagram1" ZoomLevel="71">
         <EntityTypeShape EntityType="KPIModel.ED_KPI_INFO" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="KPIModel.ED_KPI_VALUE" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="KPIModel.EP_KPI_PARAM" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
@@ -19,6 +19,14 @@
         <AssociationConnector Association="KPIModel.FK_ED_KPI_V_REFERENCE_SD_CPATS" ManuallyRouted="false" />
         <AssociationConnector Association="KPIModel.FK_EP_KPI_P_REFERENCE_SD_ITEM_" ManuallyRouted="false" />
         <AssociationConnector Association="KPIModel.FK_SD_ITEM__REFERENCE_SD_INFO" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="KPIModel.TC_DATAITEM_SETTING" Width="1.5" PointX="8.375" PointY="15.5" />
+        <EntityTypeShape EntityType="KPIModel.TC_IN_GROUP_SETTING" Width="1.5" PointX="12.625" PointY="8.125" />
+        <EntityTypeShape EntityType="KPIModel.TC_PROJECT" Width="1.5" PointX="7.375" PointY="8.25" />
+        <EntityTypeShape EntityType="KPIModel.TC_SD_INFO" Width="1.5" PointX="10" PointY="8" />
+        <AssociationConnector Association="KPIModel.FK_TC_DATAI_REFERENCE_SD_ITEM_" />
+        <AssociationConnector Association="KPIModel.FK_TC_SD_IN_REFERENCE_TC_PROJE" />
+        <AssociationConnector Association="KPIModel.FK_TC_IN_GR_REFERENCE_TC_SD_IN" />
+        <AssociationConnector Association="KPIModel.FK_TC_DATAI_REFERENCE_TC_SD_IN" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
