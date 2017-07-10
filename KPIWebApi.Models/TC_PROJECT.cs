@@ -22,8 +22,6 @@ namespace KPIWebApi.Models
     
         public int ID { get; set; }
         public string PROJECT_NAME { get; set; }
-        public string CDR_SETTING { get; set; }
-        public string SDR_SETTING { get; set; }
         public Nullable<System.DateTime> UPD_DATE { get; set; }
         public string UDP_USER_ID { get; set; }
         public string CDR_IP { get; set; }

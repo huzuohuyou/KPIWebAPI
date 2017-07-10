@@ -1,4 +1,6 @@
-﻿namespace KPIWebAPI.Areas.TCProject.ViewModels
+﻿using System;
+
+namespace KPIWebAPI.Areas.TCProject.ViewModels
 {
     public class TcProject
     {
@@ -10,7 +12,8 @@
         public string SDRIP { get; set; }
         public string SDRUName { get; set; }
         public string SDRPWD { get; set; }
-        public string CDRSatus { get; }
+        public DateTime Cdate { get; set; }
+        public string CDRStatus { get; }
         public string SDRStatus { get; }
         public string CrateTime { get; set; }
     }

@@ -620,8 +620,6 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PROJECT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CDR_SETTING" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="SDR_SETTING" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="UPD_DATE" Type="DateTime" Precision="3" />
           <Property Name="UDP_USER_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TC_SD_INFO" Relationship="KPIModel.FK_TC_SD_IN_REFERENCE_TC_PROJE" FromRole="TC_PROJECT" ToRole="TC_SD_INFO" />

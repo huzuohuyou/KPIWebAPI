@@ -481,6 +481,45 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="T:KPIWebAPI.Areas.TCProject.Controllers.ProjectController">
+            <summary>
+            项目配置webapi
+            </summary>
+        </member>
+        <member name="M:KPIWebAPI.Areas.TCProject.Controllers.ProjectController.GetProject">
+            <summary>
+            获取全部项目
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:KPIWebAPI.Areas.TCProject.Controllers.ProjectController.GetByPageProject(KPIWebAPI.Areas.TCProject.Models.ProjectPage)">
+            <summary>
+            获取某一页项目
+            </summary>
+            <param name="page"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KPIWebAPI.Areas.TCProject.Controllers.ProjectController.PutProject(KPIWebAPI.Areas.TCProject.ViewModels.TcProject)">
+            <summary>
+            更新项目
+            </summary>
+            <param name="p"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KPIWebAPI.Areas.TCProject.Controllers.ProjectController.PostProject(KPIWebAPI.Areas.TCProject.ViewModels.TcProject)">
+            <summary>
+            新增项目
+            </summary>
+            <param name="p"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KPIWebAPI.Areas.TCProject.Controllers.ProjectController.DelProject(KPIWebAPI.Areas.TCProject.ViewModels.TcProject)">
+            <summary>
+            删除项目
+            </summary>
+            <param name="p"></param>
+            <returns></returns>
+        </member>
         <member name="P:KPIWebAPI.Areas.TCProject.Models.ProjectPage.Num">
             <summary>
             当前页码
